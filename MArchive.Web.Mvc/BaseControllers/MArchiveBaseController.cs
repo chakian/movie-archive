@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using MArchive.Web.Mvc.Attributes;
-using com.cagdaskorkut.mvc;
 
 namespace MArchive.Web.Mvc.BaseControllers {
     [MArchiveAuthorizeUser]

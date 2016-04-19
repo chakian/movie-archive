@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using com.cagdaskorkut.utility.CacheUtil;
-using com.cagdaskorkut.utility.Exceptions;
-using com.cagdaskorkut.utility.Repository;
-using com.cagdaskorkut.utility.Security;
 using MArchive.DataContext;
 using MArchive.Domain.User;
 

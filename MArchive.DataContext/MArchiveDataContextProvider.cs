@@ -1,5 +1,5 @@
-﻿using System.Configuration;
-using com.cagdaskorkut.utility.ExtendedDataContext;
+﻿using MArchiveLibrary.ExtendedDataContext;
+using System.Configuration;
 
 namespace MArchive.DataContext
 {

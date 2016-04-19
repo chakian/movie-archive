@@ -1,7 +1,4 @@
-﻿using com.cagdaskorkut.utility.ExtendedDataContext;
-using com.cagdaskorkut.utility.ObjectMapping;
-using com.cagdaskorkut.utility.Repository;
-using MArchive.DataContext;
+﻿using MArchive.DataContext;
 using MArchive.Domain.Message;
 using MArchive.Domain.User;
 using System.Collections.Generic;

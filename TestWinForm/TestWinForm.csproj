@@ -191,10 +191,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MArchiveLibrary\MArchiveLibrary.csproj">
       <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
       <Name>MArchiveLibrary</Name>

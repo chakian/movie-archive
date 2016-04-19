@@ -220,10 +220,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MArchive.BL\MArchive.BL.csproj">
       <Project>{efd1c0ec-8317-483f-bb48-117f00adf648}</Project>
       <Name>MArchive.BL</Name>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using com.cagdaskorkut.utility.CacheUtil;
-using com.cagdaskorkut.utility.ExtendedDataContext;
-using com.cagdaskorkut.utility.ObjectMapping;
-using com.cagdaskorkut.utility.Repository;
 using MArchive.DataContext;
 using MArchive.Domain.Movie;
 

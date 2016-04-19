@@ -320,14 +320,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\mvc\com.cagdaskorkut.mvc.csproj">
-      <Project>{4600fc30-ddae-4c27-9561-e90508286539}</Project>
-      <Name>com.cagdaskorkut.mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MArchive.BL\MArchive.BL.csproj">
       <Project>{efd1c0ec-8317-483f-bb48-117f00adf648}</Project>
       <Name>MArchive.BL</Name>
@@ -340,6 +332,10 @@
       <Project>{48bc2eea-545e-40af-a8dc-f7477361d76e}</Project>
       <Name>MArchive.Web.Mvc</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\MArchiveLibrary\MArchiveLibrary.csproj">
+      <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
+      <Name>MArchiveLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

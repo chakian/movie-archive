@@ -1,5 +1,4 @@
-﻿using com.cagdaskorkut.utility.CacheUtil;
-namespace MArchive.BL {
+﻿namespace MArchive.BL {
     public abstract class BLBase {
         //protected static void WriteCache(string key, string functionName, object value) {
         //    CacheManager.WriteCache(key, functionName, value);

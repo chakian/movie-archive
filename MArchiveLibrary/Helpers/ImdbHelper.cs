@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Globalization;
-using com.cagdaskorkut.utility;
 
-namespace MArchiveLibrary {
-	public class imdbHelper {
+namespace MArchiveLibrary.Helpers
+{
+	public class ImdbHelper {
 		static TextWriter tw;
 		static DateTime startTime;
 
 		#region get movie information with the IMDB ID
-		public static imdbModel getMovieInformation ( String imdbId, TextWriter tempTw, DateTime startTemp ) {
+		public static ImdbModel getMovieInformation ( String imdbId, TextWriter tempTw, DateTime startTemp ) {
 			tw = tempTw;
 			startTime = startTemp;
 			return getMovieInformation ( imdbId );
@@ -40,8 +40,8 @@ namespace MArchiveLibrary {
             catch { throw; }
         }
 
-		public static imdbModel getMovieInformation (string imdbId ) {
-			imdbModel inf = new imdbModel ( );
+		public static ImdbModel getMovieInformation (string imdbId ) {
+			ImdbModel inf = new ImdbModel ( );
 
 			inf.id = imdbId;
 

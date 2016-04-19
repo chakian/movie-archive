@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using com.cagdaskorkut.mvc;
 
 namespace MArchive.Web {
 	public class FilterConfig {

@@ -5,8 +5,7 @@ using MArchive.Domain.Movie;
 using MArchive.Web.Models.List;
 using System.Collections.Generic;
 using MArchive.Web.Mvc.BaseControllers;
-using com.cagdaskorkut.mvc;
-using com.cagdaskorkut.mvc.JqGrid.Model;
+using MArchiveLibrary.Attributes;
 
 namespace MArchive.Web.Controllers {
     [Role(RoleEnum.SKIP_AUTHORIZATION)]

@@ -5,14 +5,14 @@ using MArchiveLibrary;
 
 namespace MArchiveImdbParser {
 	public partial class imdbInfoForm : Form {
-		imdbModel iinfo;
+		ImdbModel iinfo;
 		string senderName;
 		object senderForm;
 
 		public imdbInfoForm ( ) {
 			InitializeComponent ( );
 		}
-		public imdbInfoForm ( imdbModel imdbInfo, object senderF, string senderN ) {
+		public imdbInfoForm ( ImdbModel imdbInfo, object senderF, string senderN ) {
 			InitializeComponent ( );
 			iinfo = imdbInfo;
 			senderForm = senderF;
@@ -143,7 +143,7 @@ namespace MArchiveImdbParser {
 		}
 
 		private void btnSave_Click ( object sender, EventArgs e ) {
-			imdbModel temp = new imdbModel ( );
+			ImdbModel temp = new ImdbModel ( );
 
 			//ID
 			temp.id = iinfo.id;

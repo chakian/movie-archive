@@ -66,12 +66,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="MovieArchiveDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -97,6 +91,12 @@
     <None Include="MovieArchiveDBHistory.dbml.layout">
       <DependentUpon>MovieArchiveDBHistory.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MArchiveLibrary\MArchiveLibrary.csproj">
+      <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
+      <Name>MArchiveLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

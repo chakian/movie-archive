@@ -4,9 +4,9 @@ using System.Web.Mvc;
 using MArchive.BL;
 using MArchive.Domain.Movie;
 using MArchive.Web.Models.Movie;
-using com.cagdaskorkut.utility;
-using com.cagdaskorkut.mvc;
 using MArchive.Web.Mvc.BaseControllers;
+using MArchiveLibrary.Attributes;
+using MArchiveLibrary.Helpers;
 
 namespace MArchive.Web.Controllers {
 	[Role( RoleEnum.SuperDuperUser )]
@@ -28,7 +28,7 @@ namespace MArchive.Web.Controllers {
         [HttpPost]
         public ActionResult AddMovie(MovieAddEditModel model)
         {
-            model.MovieName.LanguageID = Parse.ToInt32(model.NameLanguageID);
+            model.MovieName.LanguageID = ParseHelper.ToInt32(model.NameLanguageID);
             model.MovieName.IsDefault = true;
 
             //model.MovieArchive.ArchiveID = Parse.ToInt32(model.ArchiveID);
@@ -95,7 +95,7 @@ namespace MArchive.Web.Controllers {
             //MovieArchiveDO _movieArchive = MovieArchiveBL.GetAllDOByMovieID(movieId).SingleOrDefault();
             //if (_movieArchive == null) _movieArchive = new MovieArchiveDO() { MovieID = movieId };
 
-            _movieName.LanguageID = Parse.ToInt32(model.NameLanguageID);
+            _movieName.LanguageID = ParseHelper.ToInt32(model.NameLanguageID);
             _movieName.Name = model.MovieName.Name;
 
             //_movieArchive.ArchiveID = Parse.ToInt32(model.ArchiveID);

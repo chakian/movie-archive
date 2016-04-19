@@ -3,7 +3,7 @@ using MArchive.BL;
 using MArchive.Domain.Movie;
 using MArchive.Web.Mvc.Attributes;
 using MArchive.Web.Mvc.BaseControllers;
-using com.cagdaskorkut.mvc;
+using MArchiveLibrary.Attributes;
 
 namespace MArchive.Web.Controllers
 {

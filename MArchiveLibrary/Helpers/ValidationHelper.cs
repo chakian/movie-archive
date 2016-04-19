@@ -1,8 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 using System.Text;
 
-namespace MArchiveLibrary {
-	public static class validationHelper {
+namespace MArchiveLibrary.Helpers
+{
+	public static class ValidationHelper {
 		public static string replaceNonEnglishCharacters (string input ) {
             string returnValue = input.ToLower ( );
 

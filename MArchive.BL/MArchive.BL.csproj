@@ -85,10 +85,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MArchive.DataContext\MArchive.DataContext.csproj">
       <Project>{5340045d-29ef-4b5b-a696-4c38e3f16e08}</Project>
       <Name>MArchive.DataContext</Name>

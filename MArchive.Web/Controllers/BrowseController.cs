@@ -3,8 +3,8 @@ using System.Web.Mvc;
 using MArchive.BL;
 using MArchive.Web.Models.Browse;
 using MArchive.Web.Filtering;
-using com.cagdaskorkut.mvc;
 using MArchive.Web.Mvc.BaseControllers;
+using MArchiveLibrary.Attributes;
 
 namespace MArchive.Web.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using com.cagdaskorkut.utility.CacheUtil;
 using MArchive.Web.Mvc.BaseControllers;
-using com.cagdaskorkut.mvc;
+using MArchiveLibrary.Attributes;
+using MArchiveLibrary.Caching;
 
 namespace MArchive.Web.Controllers {
 	[Role( RoleEnum.SuperDuperUser )]

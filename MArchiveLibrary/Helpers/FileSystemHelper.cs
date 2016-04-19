@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using MArchive.Domain.Movie;
 
-namespace MArchiveLibrary {
-	public class fileSystemHelper {
+namespace MArchiveLibrary.Helpers
+{
+	public class FileSystemHelper {
 		public static string getMoviePictureSavePath ( ) {//string basePath ) {
 			//String savePath = basePath + staticResources.moviePicturePath;
 			String savePath = staticResources.path_fullWebSiteImagePath;
@@ -15,7 +15,7 @@ namespace MArchiveLibrary {
 		public static string getMoviePictureShowPath ( ) {
 			return staticResources.url_fullWebSiteImageUrl + "/";
 		}
-		public static string prepareFileNameForPicture ( string originalFileName, MovieDO mov, string savePath ) {
+		public static string prepareFileNameForPicture ( string originalFileName, MovieNameModel mov, string savePath ) {
 			string fileNameReturn, extension;
 			// create file name
 			fileNameReturn = mov.OriginalName;

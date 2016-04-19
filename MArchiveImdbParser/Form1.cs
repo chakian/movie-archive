@@ -93,9 +93,9 @@ namespace MArchiveImdbParser {
 				DateTime start = DateTime.Now;
 				tw.WriteLine( "Start : " + start.ToString( ) );
 
-				imdbModel iInfo = new imdbModel( );
+				ImdbModel iInfo = new ImdbModel( );
 				try {
-					iInfo = imdbHelper.getMovieInformation( imdbId, tw, start );
+					iInfo = ImdbHelper.getMovieInformation( imdbId, tw, start );
 					DateTime finish = DateTime.Now;
 					TimeSpan processTime = finish - start;
 					imdbInfoForm frmImdbInfo = new imdbInfoForm( iInfo, this, "addnew" );
@@ -113,7 +113,7 @@ namespace MArchiveImdbParser {
 		private void btnSearch_Click( object sender, EventArgs e ) {
 			//MOVIE NAME
 			if( !string.IsNullOrEmpty( txtSearch.Text ) ) {
-				string search = imdbHelper.getSearchFriendlyString( txtSearch.Text );
+				string search = ImdbHelper.getSearchFriendlyString( txtSearch.Text );
 				string imdbId = "";
                 string tempHtml = "";
 				//StreamReader sr = new StreamReader ( @"E:\Projects\MArchive\MArchiveImdbParser\imdb_se.txt" );
@@ -367,9 +367,9 @@ namespace MArchiveImdbParser {
 		#endregion thread helper functions
 
 		private void getMovieInfoByIdAndSave( string imdbId, MovieDO movie, TextWriter tw, DateTime start ) {
-			imdbModel imdbInfo = new imdbModel( );
+			ImdbModel imdbInfo = new ImdbModel( );
 			try {
-				imdbInfo = imdbHelper.getMovieInformation( imdbId, tw, start );
+				imdbInfo = ImdbHelper.getMovieInformation( imdbId, tw, start );
 
 				logHelper.logLine( tw, "Imdb information parsed successfully. Starting operation 'Basic Info'" );
 
@@ -377,7 +377,7 @@ namespace MArchiveImdbParser {
 				if(string.IsNullOrEmpty( movie.ImdbID ) ) movie.ImdbID = imdbId;
 				if(string.IsNullOrEmpty( movie.ImdbPoster ) && !string.IsNullOrEmpty( imdbInfo.picturePath ) ) {
 					string savePath = getSavePath( );
-					string fileName = fileSystemHelper.prepareFileNameForPicture( imdbInfo.picturePath.Substring( imdbInfo.picturePath.LastIndexOf( '/' ) ), movie, savePath );
+					string fileName = FileSystemHelper.prepareFileNameForPicture( imdbInfo.picturePath.Substring( imdbInfo.picturePath.LastIndexOf( '/' ) ), movie, savePath );
                     WebRequestHelper.Download(imdbInfo.picturePath, savePath + fileName);
 					movie.ImdbPoster = fileName;
 				}
@@ -527,7 +527,7 @@ namespace MArchiveImdbParser {
 		}
 
 		public string getSavePath( ) {
-			return fileSystemHelper.getMoviePictureSavePath( );
+			return FileSystemHelper.getMoviePictureSavePath( );
 		}
 
 		#region List Operations

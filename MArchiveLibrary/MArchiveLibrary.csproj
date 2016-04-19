@@ -145,26 +145,56 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\..\com_cagdaskorkut\_References\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AuthorizeUserAttribute.cs" />
+    <Compile Include="Attributes\RoleAttribute.cs" />
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="entity\MovieNameModel.cs" />
+    <Compile Include="entity\SimpleUserModel.cs" />
+    <Compile Include="Exceptions\AuthorizationException.cs" />
+    <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\ExceptionBase.cs" />
+    <Compile Include="Exceptions\KnownException.cs" />
+    <Compile Include="ExtendedDataContext\AuditInfo.cs" />
+    <Compile Include="ExtendedDataContext\DataContextHelper.cs" />
+    <Compile Include="ExtendedDataContext\Enumerations.cs" />
+    <Compile Include="ExtendedDataContext\IDataContextProvider.cs" />
+    <Compile Include="Helpers\ParseHelper.cs" />
     <Compile Include="HtmlCodes.cs" />
+    <Compile Include="JqGrid\Core\Filter.cs" />
+    <Compile Include="JqGrid\Core\IPagedList.cs" />
+    <Compile Include="JqGrid\Core\JqGridExtensions.cs" />
+    <Compile Include="JqGrid\Core\PagedList.cs" />
+    <Compile Include="JqGrid\Core\PagingLinqExtensions.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\JqGridFilterRule.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\JqGridFilters.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\JqGridHelper.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\JqGridModelBinder.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\JqGridRequest.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\Response\JqGridData.cs" />
+    <Compile Include="JqGrid\Model\JqGrid\Response\JqGridRowItem.cs" />
     <Compile Include="marchiveDb.cs">
       <DependentUpon>marchiveDb.dbml</DependentUpon>
     </Compile>
     <Compile Include="partial_classes\tblMovie.cs" />
-    <Compile Include="entity\imdbModel.cs" />
-    <Compile Include="fileSystemHelper.cs" />
-    <Compile Include="imdbHelper.cs" />
+    <Compile Include="entity\ImdbModel.cs" />
+    <Compile Include="Helpers\FileSystemHelper.cs" />
+    <Compile Include="Helpers\ImdbHelper.cs" />
     <Compile Include="interfaces\IPicture.cs" />
     <Compile Include="marchiveDb.designer.cs">
       <AutoGen>True</AutoGen>
@@ -177,13 +207,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reflection\ReflectionExtensions.cs" />
     <Compile Include="staticResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>staticResources.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="validationHelper.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -212,20 +243,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MArchive.BL\MArchive.BL.csproj">
-      <Project>{efd1c0ec-8317-483f-bb48-117f00adf648}</Project>
-      <Name>MArchive.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MArchive.Domain\MArchive.Domain.csproj">
-      <Project>{d92511ea-c93e-4460-9570-9a5b5c7845e1}</Project>
-      <Name>MArchive.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

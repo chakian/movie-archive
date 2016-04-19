@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using com.cagdaskorkut.mvc;
 using MArchive.Web.Mvc.BaseControllers;
+using MArchiveLibrary.Attributes;
 
 namespace MArchive.Web.Controllers
 {

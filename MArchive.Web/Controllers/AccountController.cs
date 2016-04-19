@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Security;
-using com.cagdaskorkut.utility.Exceptions;
 using MArchive.BL;
 using MArchive.Web.Models.Account;
-using MArchive.Web.Mvc.Attributes;
 using MArchive.Web.Mvc.BaseControllers;
 using MArchive.Domain.User;
-using com.cagdaskorkut.mvc;
+using MArchiveLibrary.Attributes;
+using MArchiveLibrary.Exceptions;
 
 namespace MArchive.Web.Controllers {
     [Role(RoleEnum.SKIP_AUTHORIZATION)]

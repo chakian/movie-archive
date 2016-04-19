@@ -3,7 +3,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using MArchive.BL;
 using MArchive.Domain.User;
-using com.cagdaskorkut.mvc;
+using MArchiveLibrary.Attributes;
+using MArchiveLibrary;
 
 namespace MArchive.Web.Mvc.Attributes {
 	public class MArchiveAuthorizeUserAttribute : AuthorizeUserAttribute {

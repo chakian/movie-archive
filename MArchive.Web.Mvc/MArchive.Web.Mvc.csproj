@@ -49,19 +49,12 @@
   <ItemGroup>
     <Compile Include="Attributes\MArchiveAuthorizeUserAttribute.cs" />
     <Compile Include="Attributes\HandleJsonErrorAttribute.cs" />
+    <Compile Include="BaseControllers\BaseController.cs" />
     <Compile Include="BaseControllers\MArchiveBaseController.cs" />
     <Compile Include="BaseControllers\MArchiveBaseAuthenticatedController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\com_cagdaskorkut\mvc\com.cagdaskorkut.mvc.csproj">
-      <Project>{4600fc30-ddae-4c27-9561-e90508286539}</Project>
-      <Name>com.cagdaskorkut.mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\com_cagdaskorkut\utility\com.cagdaskorkut.utility.csproj">
-      <Project>{c4d8c4cc-1cce-4138-aa19-a9cf2e4c3c70}</Project>
-      <Name>com.cagdaskorkut.utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MArchive.BL\MArchive.BL.csproj">
       <Project>{efd1c0ec-8317-483f-bb48-117f00adf648}</Project>
       <Name>MArchive.BL</Name>
@@ -69,6 +62,10 @@
     <ProjectReference Include="..\MArchive.Domain\MArchive.Domain.csproj">
       <Project>{d92511ea-c93e-4460-9570-9a5b5c7845e1}</Project>
       <Name>MArchive.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MArchiveLibrary\MArchiveLibrary.csproj">
+      <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
+      <Name>MArchiveLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
