@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Elmah;
 using MArchive.Domain;
+using MArchiveLibrary.Exceptions;
 
 namespace MArchive.Web.Mvc.Attributes {
 	public class HandleJsonErrorAttribute : FilterAttribute, IExceptionFilter {

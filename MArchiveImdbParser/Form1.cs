@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using MArchive.BL;
 using MArchive.Domain.Movie;
 using MArchiveLibrary;
-using com.cagdaskorkut.utility;
+using MArchiveLibrary.Helpers;
 
 namespace MArchiveImdbParser {
 	public partial class Form1 : Form, IPicture {
@@ -377,7 +377,7 @@ namespace MArchiveImdbParser {
 				if(string.IsNullOrEmpty( movie.ImdbID ) ) movie.ImdbID = imdbId;
 				if(string.IsNullOrEmpty( movie.ImdbPoster ) && !string.IsNullOrEmpty( imdbInfo.picturePath ) ) {
 					string savePath = getSavePath( );
-					string fileName = FileSystemHelper.prepareFileNameForPicture( imdbInfo.picturePath.Substring( imdbInfo.picturePath.LastIndexOf( '/' ) ), movie, savePath );
+                    string fileName = FileSystemHelper.prepareFileNameForPicture(imdbInfo.picturePath.Substring(imdbInfo.picturePath.LastIndexOf('/')), new MovieNameModel { OriginalName = movie.OriginalName }, savePath);
                     WebRequestHelper.Download(imdbInfo.picturePath, savePath + fileName);
 					movie.ImdbPoster = fileName;
 				}

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using MArchiveLibrary.Attributes;
+using System.Web.Mvc;
 
 namespace MArchive.Web {
 	public class FilterConfig {

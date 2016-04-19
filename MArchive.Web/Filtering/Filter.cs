@@ -2,7 +2,7 @@
 using System.Linq;
 using MArchive.BL;
 using MArchive.Domain.Movie;
-using com.cagdaskorkut.utility;
+using MArchiveLibrary.Helpers;
 
 namespace MArchive.Web.Filtering
 {
@@ -49,7 +49,7 @@ namespace MArchive.Web.Filtering
             //filter year
             if (string.IsNullOrEmpty(Year.FilterValue) == false)
             {
-                int year = Parse.ToInt32(Year.FilterValue);
+                int year = ParseHelper.ToInt32(Year.FilterValue);
                 if (year > 0)
                 {
                     if (Year.FilterType == FilterTypes.Equals)
@@ -64,7 +64,7 @@ namespace MArchive.Web.Filtering
             //filter imdb rating
             if (string.IsNullOrEmpty(ImdbRating.FilterValue) == false)
             {
-                double imdbRating = Parse.ToDouble(ImdbRating.FilterValue);
+                double imdbRating = ParseHelper.ToDouble(ImdbRating.FilterValue);
                 if (imdbRating > 0)
                 {
                     if (ImdbRating.FilterType == FilterTypes.Equals)
@@ -99,7 +99,7 @@ namespace MArchive.Web.Filtering
             //filter my rating
             if (string.IsNullOrEmpty(MyRating.FilterValue) == false)
             {
-                double myRating = Parse.ToDouble(MyRating.FilterValue);
+                double myRating = ParseHelper.ToDouble(MyRating.FilterValue);
                 if (myRating > 0)
                 {
                     List<int> movieIdsForUsersRatings = new List<int>();
@@ -119,7 +119,7 @@ namespace MArchive.Web.Filtering
             {
                 List<int> typeIds = new List<int>();
                 foreach (var item in MovieType)
-                    typeIds.Add(Parse.ToInt32(item));
+                    typeIds.Add(ParseHelper.ToInt32(item));
 
                 var allMoviesAndTypes = MovieTypeBL.GetAllDO().Where(q => typeIds.Contains(q.TypeID));
                 movieList = movieList.Join(allMoviesAndTypes, mList => mList.ID, allMovs => allMovs.MovieID, (mList, allMovs) => mList).ToList();

@@ -1,8 +1,11 @@
 ﻿using MArchive.DataContext;
 using MArchive.Domain.Message;
 using MArchive.Domain.User;
+using MArchiveLibrary.ObjectMapping;
 using System.Collections.Generic;
 using System.Linq;
+using MArchiveLibrary.Repository;
+using MArchiveLibrary.ExtendedDataContext;
 
 namespace MArchive.BL
 {

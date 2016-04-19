@@ -3,6 +3,8 @@ using MArchive.DataContext;
 using MArchive.Domain.Movie;
 using System.Collections.Generic;
 using AutoMapper;
+using MArchiveLibrary.Repository;
+using MArchiveLibrary.ObjectMapping;
 
 namespace MArchive.BL
 {

@@ -4,6 +4,9 @@ using AutoMapper;
 using MArchive.DataContext;
 using MArchive.Domain.Lookup;
 using MArchive.Domain.Movie;
+using MArchiveLibrary.Repository;
+using MArchiveLibrary.ObjectMapping;
+using MArchiveLibrary.ExtendedDataContext;
 
 namespace MArchive.BL {
     public class MovieDirectorBL : BLBase {

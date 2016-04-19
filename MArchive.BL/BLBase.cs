@@ -1,4 +1,6 @@
-﻿namespace MArchive.BL {
+﻿using MArchiveLibrary.Caching;
+
+namespace MArchive.BL {
     public abstract class BLBase {
         //protected static void WriteCache(string key, string functionName, object value) {
         //    CacheManager.WriteCache(key, functionName, value);

@@ -93,6 +93,10 @@
       <Project>{d92511ea-c93e-4460-9570-9a5b5c7845e1}</Project>
       <Name>MArchive.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MArchiveLibrary\MArchiveLibrary.csproj">
+      <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
+      <Name>MArchiveLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

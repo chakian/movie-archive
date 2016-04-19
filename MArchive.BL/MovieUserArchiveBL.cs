@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using MArchive.DataContext;
 using MArchive.Domain.Movie;
+using MArchiveLibrary.Repository;
 
 namespace MArchive.BL {
     public class MovieUserArchiveBL : BLBase {

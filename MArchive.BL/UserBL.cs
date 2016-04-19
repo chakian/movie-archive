@@ -3,6 +3,9 @@ using System.Linq;
 using AutoMapper;
 using MArchive.DataContext;
 using MArchive.Domain.User;
+using MArchiveLibrary.Helpers;
+using MArchiveLibrary.Exceptions;
+using MArchiveLibrary.Repository;
 
 namespace MArchive.BL {
 	public class UserBL : BLBase {
@@ -17,7 +20,7 @@ namespace MArchive.BL {
 
 		public static bool IsUserAuthenticationCorrect( UserDO user, string username, string password ) {
 			// check user data validity
-            if (user == null || user.Password == Encryption.Encrypt(password) == false) {
+            if (user == null || user.Password == EncryptionHelper.Encrypt(password) == false) {
                 throw new BusinessException("Incorrect username or password.");
 			}
 

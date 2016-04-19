@@ -1,4 +1,4 @@
-﻿using com.cagdaskorkut.utility.Security;
+﻿using MArchiveLibrary.Helpers;
 using System;
 using System.Windows.Forms;
 
@@ -13,12 +13,12 @@ namespace TestWinForm
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = Encryption.Encrypt(txtInput.Text);
+            txtOutput.Text = EncryptionHelper.Encrypt(txtInput.Text);
         }
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = Encryption.Decrypt(txtInput.Text);
+            txtOutput.Text = EncryptionHelper.Decrypt(txtInput.Text);
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Linq;
 using AutoMapper;
 using MArchive.DataContext;
 using MArchive.Domain.Lookup;
+using MArchiveLibrary.Repository;
+using MArchiveLibrary.ObjectMapping;
+using MArchiveLibrary.ExtendedDataContext;
 
 namespace MArchive.BL {
     public class ArchiveBL : BLBase {

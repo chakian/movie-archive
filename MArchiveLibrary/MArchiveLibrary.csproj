@@ -149,6 +149,8 @@
       <HintPath>..\..\com_cagdaskorkut\_References\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -162,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AuthorizeUserAttribute.cs" />
+    <Compile Include="Attributes\HandleErrorCustomAttribute.cs" />
     <Compile Include="Attributes\RoleAttribute.cs" />
     <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="entity\MovieNameModel.cs" />
@@ -174,7 +177,9 @@
     <Compile Include="ExtendedDataContext\DataContextHelper.cs" />
     <Compile Include="ExtendedDataContext\Enumerations.cs" />
     <Compile Include="ExtendedDataContext\IDataContextProvider.cs" />
+    <Compile Include="Helpers\EncryptionHelper.cs" />
     <Compile Include="Helpers\ParseHelper.cs" />
+    <Compile Include="Helpers\WebRequestHelper.cs" />
     <Compile Include="HtmlCodes.cs" />
     <Compile Include="JqGrid\Core\Filter.cs" />
     <Compile Include="JqGrid\Core\IPagedList.cs" />
@@ -191,6 +196,8 @@
     <Compile Include="marchiveDb.cs">
       <DependentUpon>marchiveDb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ObjectMapping\ObjectMapper.cs" />
+    <Compile Include="ObjectMapping\OmitMappingAttribute.cs" />
     <Compile Include="partial_classes\tblMovie.cs" />
     <Compile Include="entity\ImdbModel.cs" />
     <Compile Include="Helpers\FileSystemHelper.cs" />
@@ -208,6 +215,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Reflection\ReflectionExtensions.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="staticResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,6 +224,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="System\Linq\Dynamic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

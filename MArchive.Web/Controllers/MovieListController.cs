@@ -6,6 +6,7 @@ using MArchive.Web.Models.List;
 using System.Collections.Generic;
 using MArchive.Web.Mvc.BaseControllers;
 using MArchiveLibrary.Attributes;
+using MArchiveLibrary.JqGrid.Model;
 
 namespace MArchive.Web.Controllers {
     [Role(RoleEnum.SKIP_AUTHORIZATION)]
