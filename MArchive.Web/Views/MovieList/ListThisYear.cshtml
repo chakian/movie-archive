@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "This Year's Movies In Discs";
+}
+
+@PageHelper.WriteTitle( "Lists", "List of " + DateTime.Now.Year.ToString( ) + "'s movies in discs" )
+
+<!-- List All Grid -->
+<table id="tblList"></table>
+<div id="divPager"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gridParams = {
+            table: "#tblList",
+            pager: "#divPager",
+            actionLink: '@Url.Action( "ListThisYearJson", "MovieList" )',
+            columnNames: ['ID', 'Poster', 'Original', 'English', 'Turkish', 'Year', 'IMDb Rat.', 'IMDb Page'],
+            columnModel: GetMovieListColumnModel(),
+            sortName: 'ID',
+            sortOrder: 'asc',
+            gridCaption: 'All Movies'
+        };
+
+        ListInitialize(gridParams);
+    });
+</script>

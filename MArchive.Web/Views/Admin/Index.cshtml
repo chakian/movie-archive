@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+@PageHelper.WriteTitle( "Holy Admin", "Welcome to the jungle" )
+
+@*Diğer ikonlar
+<i class="icon-eye-open"></i>
+<i class="icon-table"></i>
+<i class="icon-print"></i>
+<i class="icon-magic"></i>*@
+
+<div class="row">
+
+    <div class="service span3 centered">
+        <a href="@Url.Action( "ExcelImport", "Admin" )">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Import From Excel</h4>
+        </a>
+        @*<a href="#">Download Sample</a>*@
+    </div>
+    <div class="service span3 centered">
+        <a href="@Url.Action( "ExcelImportForArchive", "Admin" )">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Import Archive Info (via MovieID) From Excel</h4>
+        </a>
+        @*<a href="#">Download Sample</a>*@
+    </div>
+    <div class="service span3 centered">
+        <a href="@Url.Action( "MemoryStatus", "Cache" )">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Cache</h4>
+        </a>
+    </div>
+    <div class="service span3 centered">
+        <a href="~/elmah.axd">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Logs</h4>
+        </a>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="service span3 centered">
+        <a href="@Url.Action( "AddMovie", "Admin" )">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Add Movie</h4>
+        </a>
+    </div>
+</div>
+
+<br />

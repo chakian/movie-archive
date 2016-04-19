@@ -1,0 +1,94 @@
+﻿@using System.Linq
+@model MArchive.Web.Models.Search.SuperSearchResultModel
+@{
+    ViewBag.Title = "Super Search";
+}
+
+@PageHelper.WriteTitle( "Search", "Results" )
+
+@if( Model == null ) { 
+    <h2>Nothing to see here..</h2>
+} else {
+    <!-- List For Name -->
+    <h4>Results for movie names</h4>
+    <table id="tblListForName"></table>
+    <div id="divPagerForName"></div>
+    
+    <h4>Results for actors</h4>
+    <table id="tblListForActor"></table>
+    <div id="divPagerForActor"></div>
+    
+    <h4>Results for directors</h4>
+    <table id="tblListForDirector"></table>
+    <div id="divPagerForDirector"></div>
+    
+    <h4>Results for writers</h4>
+    <table id="tblListForWriter"></table>
+    <div id="divPagerForWriter"></div>
+    
+    <h4>Results for movie types</h4>
+    <table id="tblListForType"></table>
+    <div id="divPagerForType"></div>
+    
+    <h4>Results for languages</h4>
+    <table id="tblListForLanguage"></table>
+    <div id="divPagerForLanguage"></div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getGridParams(tableStr, pagerStr, urlActionStr) {
+                return {
+                    table: tableStr,
+                    pager: pagerStr,
+                    actionLink: urlActionStr,
+                    columnNames: ['ID', 'Poster', 'Original', 'English', 'Turkish', 'Year', 'IMDb Rat.', 'IMDb Page'],
+                    columnModel: GetMovieListColumnModel(),
+                    sortName: 'ID',
+                    sortOrder: 'asc',
+                    gridCaption: ''
+                };
+            }
+
+            var gridParamsForName = getGridParams("#tblListForName", "#divPagerForName", '@Url.Action( "GetSuperSearchForName", "Search" )');
+            var gridParamsForActor = getGridParams("#tblListForActor", "#divPagerForActor", '@Url.Action( "GetSuperSearchForActor", "Search" )');
+            var gridParamsForDirector = getGridParams("#tblListForDirector", "#divPagerForDirector", '@Url.Action( "GetSuperSearchForDirector", "Search" )');
+            var gridParamsForWriter = getGridParams("#tblListForWriter", "#divPagerForWriter", '@Url.Action( "GetSuperSearchForWriter", "Search" )');
+            var gridParamsForType = getGridParams("#tblListForType", "#divPagerForType", '@Url.Action( "GetSuperSearchForType", "Search" )');
+            var gridParamsForLanguage = getGridParams("#tblListForLanguage", "#divPagerForLanguage", '@Url.Action( "GetSuperSearchForLanguage", "Search" )');
+
+            ListInitialize(gridParamsForName);
+            //ListInitialize(gridParamsForActor);
+            //ListInitialize(gridParamsForDirector);
+            //ListInitialize(gridParamsForWriter);
+            //ListInitialize(gridParamsForType);
+            //ListInitialize(gridParamsForLanguage);
+        });
+    </script>
+    
+    
+    
+    
+    
+
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            var gridData = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.resultByName.Data))) ;
+                //{ 'Movie.ID': '1', 'Movie.ImdbPoster': '', 'OriginalName': 'Meraba', 'EnglishName': 'Meraba', 'TurkishName': '', 'Movie.Year': '2001', 'Movie.ImdbRating': '3', 'Movie.ImdbID': '' }
+                //@(Model.name)
+            var gridParamsForName = {
+                table: "#tblListForName",
+                pager: "#divPagerForName",
+                data: gridData,
+                datatype: 'local',
+                columnNames: ['ID', 'Poster', 'Original', 'English', 'Turkish', 'Year', 'IMDb Rat.', 'IMDb Page'],
+                columnModel: GetMovieListColumnModel(),
+                rowNum: 5,
+                sortName: 'ID',
+                sortOrder: 'asc',
+                gridCaption: 'All Movies'
+            };
+
+            ListInitializeForLocalData(gridParamsForName);
+        });
+    </script>*@
+}

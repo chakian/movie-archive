@@ -1,0 +1,74 @@
+﻿@model MArchive.Web.Models.Movie.MovieAddEditModel
+@{
+    ViewBag.Title = "Admin | Add Movie";
+}
+
+@PageHelper.WriteTitle( "Holy Admin", "Please add a new movie" )
+
+<form class="form-horizontal" style="text-align:left" action="@Url.Action( "AddMovie", "Admin" )" method="post">
+    <fieldset>
+        <legend>New Movie</legend>
+
+        <div class="control-group">
+            <label class="control-label" for="MovieName">Movie Name</label>
+            <div class="controls">
+                <input id="MovieName" name="MovieName.Name" type="text" value="@Model.MovieName.Name" placeholder="Name of movie" class="input-xlarge">
+                <p class="help-block">This should be the movie's original name</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="NameLanguageID">Movie Name Language</label>
+            <div class="controls">
+                @Html.DropDownList( "NameLanguageID", Model.Languages )
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="ImdbId">IMDb ID</label>
+            <div class="controls">
+                <input id="ImdbId" name="Movie.ImdbID" type="text" value="@Model.Movie.ImdbID" placeholder="IMDb ID" class="input-large">
+            </div>
+        </div>
+
+        <br />
+        <h4>Archive Information</h4>
+        <div class="control-group">
+            <label class="control-label" for="ArchiveExists">Archive Exists ?</label>
+            <div class="controls">
+                @Html.CheckBoxFor(q=>q.ArchiveExists)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="ArchiveResolution">Resolution</label>
+            <div class="controls">
+                @Html.DropDownList( "ArchiveResolution", Model.ResolutionList )
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="ArchiveFileExtension">File Extension</label>
+            <div class="controls">
+                @Html.DropDownList( "ArchiveFileExtension", Model.FileExtensionList )
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="ArchiveID">Archive Place</label>
+            <div class="controls">
+                @Html.DropDownList( "ArchiveID", Model.Archives )
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="ArchiveID">Archive Place</label>
+            <div class="controls">
+                <input id="MovieArchivePath" name="MovieArchive.Path" type="text" value="@Model.MovieArchive.Path" placeholder="Folder path of movie" class="input-xlarge">
+                @*@Html.TextBoxFor(q=>q.MovieArchive.Path, new {placeholder="Folder path of movie", @class="input-xlarge"})*@
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="button1id">&nbsp;</label>
+            <div class="controls">
+                <button type="submit" id="SubmitAndNavigateToMovie" name="Submit" value="SubmitAndNavigateToMovie" class="btn btn-success">Add and go to movie page</button>
+                <button type="submit" id="SubmitAndClearForm" name="Submit" value="SubmitAndClearForm" class="btn btn-success">Add and add new movie</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

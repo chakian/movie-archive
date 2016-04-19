@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Movie Archive of Çağdaş" />
+    <meta name="author" content="Çağdaş" />
+    <title>MArchive : @ViewBag.Title</title>
+
+    <!-- Styles -->
+    @Styles.Render("~/Content/jqgrid/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/bootstrap/css")
+    @Styles.Render("~/Content/andia/css")
+    @Styles.Render("~/Content/css")
+
+    <!-- Scripts -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site/js")
+</head>
+<body>
+    <!-- Header -->
+    <div class="container">
+        <div class="header row">
+            <div class="span12">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="row">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                            <h1>
+                                <a class="brand" style="text-indent:0; width:auto; height:auto; background:none;" href="@Url.Action( "Index", "Home" )">MArchive - an uber super duper movie archive...</a>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainPageContainer" class="mainContent container">
+        <div id="notification" style="display: none;">
+            <span id="notificationText">..</span> <span class="notificationDismiss"><a title="dismiss this notification">x</a></span>
+        </div>
+        @if (!ViewContext.ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(false)
+        }
+
+        @if (TempData["ErrorMessage"] != null && string.IsNullOrEmpty(TempData["ErrorMessage"].ToString()) == false)
+        {
+            <div class="validationSummaryContainer redBackground">
+                @TempData["ErrorMessage"]
+                <span class="notificationDismiss"><a title="dismiss this notification">x</a></span>
+            </div>
+        }
+
+        @if (TempData["InfoMessage"] != null && string.IsNullOrEmpty(TempData["InfoMessage"].ToString()) == false)
+        {
+            <div id="infoMessage" class="validationSummaryContainer greenBackground">
+                @TempData["InfoMessage"]
+                <span class="notificationDismiss"><a title="dismiss this notification">x</a></span>
+            </div>
+            <script type="text/javascript" language="javascript">
+                $("#infoMessage").delay(2000).fadeOut("slow");
+            </script>
+        }
+
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="copyright">
+                    <p>Copyright 2013 MArchive - All rights reserved. Template by <a href="http://azmind.com">Azmind</a>. Developer <a href="http://cagdaskorkut.com" target="_blank">Çağdaş</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        //jqGrid helper functions
+        $.jgrid.no_legacy_api = true;
+        $.jgrid.useJSON = true;
+
+        function StandardLinkCol(fieldName, width, idColIndex, url) {
+            if (url == null || url == "") {
+                url = '@Url.Action( "Edit" )';
+            }
+            var col = {
+                name: fieldName, width: width, searchoptions: { sopt: ['cn'] }, formatter: function (cellvalue, options, rowObject) {
+                    return '<a style="text-decoration: underline;" href="' + url + '?id=' + rowObject[idColIndex] + '" >' + cellvalue + '</a>';
+                }
+            };
+            return col;
+        }
+
+        function StandardImdbLinkCol(fieldName, width) {
+            var col = {
+                name: fieldName, width: width, searchoptions: { sopt: ['cn'] }, formatter: function (cellvalue, options, rowObject) {
+                    return '<a style="text-decoration: underline;" href="http://www.imdb.com/title/' + cellvalue + '" target="_blank">' + cellvalue + '</a>';
+                }
+            };
+            return col;
+        }
+
+        function StandardLinkImageCol(fieldName, width, idColIndex, url) {
+            var col = {
+                name: fieldName, width: width, formatter: function (cellvalue, options, rowObject) {
+                    if (cellvalue != "")
+
+                        return "<a style='text-decoration: underline;' href='" + url + "?id=" + rowObject[idColIndex] + "'><img style='max-height:60px;max-width:60px;' src='" + cellvalue + "' title='" + cellvalue + "' /></a>";
+                    else
+                        return "";
+                }
+            }
+            return col;
+        }
+
+        function GetMovieListColumnModel() {
+            return [
+                window.StandardLinkCol('Movie.ID', 20, 0, "@(Url.Action( "DetailView", "Movie" ))"),
+                window.StandardLinkImageCol('Movie.ImdbPoster', 30, 0, "@(Url.Action( "DetailView", "Movie" ))"),
+                window.StandardLinkCol('OriginalName', 75, 0, "@(Url.Action( "DetailView", "Movie" ))"),
+                window.StandardLinkCol('EnglishName', 75, 0, "@(Url.Action( "DetailView", "Movie" ))"),
+                window.StandardLinkCol('TurkishName', 75, 0, "@(Url.Action( "DetailView", "Movie" ))"),
+                StandardTextCol('Movie.Year', 20),
+                StandardTextCol('Movie.ImdbRating', 30),
+                window.StandardImdbLinkCol('Movie.ImdbID', 30)
+            ];
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-69349124-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@model MArchive.Web.Models.Account.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_UnAuthorizedLayout.cshtml";
+}
+
+@PageHelper.WriteTitle( "MArchive", "Login" )
+
+<div class="container">
+    <div class="row">
+        <div class="myForm span5">
+            @using( Html.BeginForm( ) ) {
+                <form action="/Account/Login" method="post">
+                    @Html.ValidationSummary( true, "Login was unsuccessful. Please correct the errors and try again." )
+
+                    <label for="Username">Username</label>
+                    @Html.TextBoxFor( m => m.Username, new { @class = "input-block-level", @placeholder = "Enter username", autofocus = "autofocus" } ) @Html.ValidationMessageFor( m => m.Username )
+                    
+                    <label for="Password">Password</label>
+                    @Html.PasswordFor( m => m.Password, new { @class = "input-block-level", @placeholder = "Enter password" } ) @Html.ValidationMessageFor( m => m.Password )
+                    
+                    <label for="RememberMe">Remember Me</label>
+                    @Html.CheckBoxFor( m => m.RememberMe ) @Html.ValidationMessageFor( m => m.RememberMe )
+                    
+                    <button type="submit">Login</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>

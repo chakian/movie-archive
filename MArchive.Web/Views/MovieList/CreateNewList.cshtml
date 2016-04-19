@@ -1,0 +1,29 @@
+﻿@model MArchive.Web.Models.List.ListMainModel
+@{
+    ViewBag.Title = "Create New List";
+}
+
+@PageHelper.WriteTitle( "Lists", "New list" )
+
+<form class="form-horizontal" style="text-align:left" action="@Url.Action( "CreateNewList", "MovieList" )" method="post">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>New List</legend>
+
+        <div class="control-group">
+            <label class="control-label" for="textinput">List Name</label>
+            <div class="controls">
+                <input id="ListName" name="UserList.Name" type="text" value="@Model.UserList.Name" placeholder="Name of list" class="input-xlarge">
+                @*<p class="help-block">help</p>*@
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="control-group">
+            <label class="control-label" for="button1id">&nbsp;</label>
+            <div class="controls">
+                <button type="submit" id="SubmitForm" name="SubmitForm" class="btn btn-success">Create</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

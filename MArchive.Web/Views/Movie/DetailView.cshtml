@@ -1,0 +1,172 @@
+﻿@model MArchive.Domain.Movie.MovieDetailDO
+@{
+    ViewBag.Title = @Model.Names.Single( n => n.IsDefault == true ).Name;
+}
+
+@PageHelper.WriteTitle( "Movie Details", string.Format("{0} {1}", Model.Names.Single( n => n.IsDefault == true ).Name, Html.ActionLink("[EDIT]", "EditMovie", "Admin", new {id = Model.ID}, null)) )
+
+<script type="text/javascript">
+    function RatingChanged() {
+        //$('#Watched').is(':checked')
+        if ($('#Rating').val() > -1) {
+            $('#Watched').prop('checked', true);
+        } else {
+            $('#Watched').prop('checked', false);
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="span4">
+        <strong>Folder@(PageHelper.PutPluralLetter( Model.Archives ))</strong>
+        <br />
+        @foreach( var item in Model.Archives ) {
+            <div class="row">
+                @(item.ArchivePath + item.Path)
+                <br />@(item.ArchiveName)(@(item.Resolution) - @(item.FileExtension))
+                @*<br />
+                <a href="file://\\127.0.0.1\C$\_Temp\">Open</a>*@
+            </div>
+        }
+    </div>
+    <div class="span4">
+        @if (Model.UserListsIncludingThisMovie.Count > 0)
+        {
+            <text>Lists this movie is in:</text><br />
+            for (int i = 0; i < Model.UserListsIncludingThisMovie.Count; i++ )
+            {
+                <a href="@Url.Action("ViewList", "MovieList", new {id=Model.UserListsIncludingThisMovie[i].ListID})">@(Model.UserListsIncludingThisMovie[i].ListName)</a>
+                if (i != Model.UserListsIncludingThisMovie.Count - 1)
+                {
+                    <br />
+                }
+            }
+            <br />
+        }
+        @if (Request.IsAuthenticated)
+        {
+            if (Model.UserLists.Count > 0)
+            {
+                <text>Add to lists:</text>
+                <form action="@Url.Action("AddToList", "Movie")" method="post" id="addToList">
+                    @Html.Hidden("UserID", Model.CurrentUserRating.UserID)
+                    @Html.Hidden("MovieID", Model.CurrentUserRating.MovieID)
+                    @Html.DropDownList("ListID", Model.SelectableLists, new { style = "width:75px;" })
+
+                    <input type="submit" value="Save" />
+                </form>
+                <script>
+                    $(function () {
+                        makeSilentAjaxForm('#addToList', null, null, null);
+                    });
+                </script>
+            }
+        }
+        else
+        {
+            <text>You can log in to add this movie to lists</text>
+        }
+    </div>
+    <div class="span4">
+        Average User Rating: @(Model.AverageUserRating > -1 ? Model.AverageUserRating.ToString() : "not rated. not even once")
+        <br />
+        @if (Request.IsAuthenticated)
+        {
+            <text>Your vote:</text>
+            <form action="@Url.Action("UpdateUserVote", "Movie")" method="post" id="saveVote">
+                @Html.Hidden("UserRatingID", Model.CurrentUserRating.ID)
+                @Html.Hidden("UserID", Model.CurrentUserRating.UserID)
+                @Html.Hidden("MovieID", Model.CurrentUserRating.MovieID)
+                @Html.CheckBox("Watched", Model.CurrentUserRating.Watched)
+                @Html.DropDownList("Rating", Model.CurrentUserRating.RatingList, new { style = "width:75px;", onchange = "RatingChanged()" })
+
+                <input type="submit" value="Save" />
+            </form>
+            <script>
+                $(function () {
+                    makeSilentAjaxForm('#saveVote', null, null, null);
+                });
+            </script>
+        }
+        else
+        {
+            <text>You can log in to vote</text>
+        }
+    </div>
+</div>
+
+<div class="row movieInfo">
+    <div class="row">
+        <div class="span6">
+            <div class="block">
+                <div class="row title">Movie Name@(PageHelper.PutPluralLetter( Model.Names ))</div>
+                @foreach( var item in Model.Names ) {
+                    <div class="row">
+                        <div class="span2 title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(item.LanguageName + ( ( item.IsDefault ) ? " (Original)" : "" ))</div>
+                        <div class="span4">@item.Name</div>
+                    </div>
+                }
+            </div>
+            <div class="block blockeven">
+                <div class="row">
+                    <div class="span2 title">Year: </div>
+                    <div class="span4">@Model.Movie.Year.ToString( )</div>
+                </div>
+                <div class="row">
+                    <div class="span2 title">IMDb Rating: </div>
+                    <div class="span4">@Model.Movie.ImdbRating.ToString( )</div>
+                </div>
+                <div class="row">
+                    <div class="span2 title">IMDb Page: </div>
+                    <div class="span4"><a href="@Model.Movie.ImdbPageUrl" target="_blank">@Model.Movie.ImdbID</a></div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="row title">Movie Language@(PageHelper.PutPluralLetter( Model.Languages ))</div>
+                @foreach( var item in Model.Languages ) {
+                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(item.LanguageName)</div>
+                }
+            </div>
+            <div class="block blockeven">
+                <div class="row title">Movie Type@(PageHelper.PutPluralLetter( Model.Types ))</div>
+                @foreach( var item in Model.Types ) {
+                    <div class="row">
+                        <div class="span2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(item.TypeName)</div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="span6 poster">
+            @if (string.IsNullOrEmpty(Model.Movie.ImdbPosterPath) == false)
+            {
+                <img src="@BrowseHelper.GetFullPathForImage(Model.Movie.ImdbPosterPath)" />
+            }
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="span6">
+            <div class="row title">Director@(PageHelper.PutPluralLetter( Model.Directors ))</div>
+            @foreach( var item in Model.Directors ) {
+                <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(item.DirectorName)</div>
+            }
+        </div>
+        <div class="span6">
+            <div class="row title">Writer@(PageHelper.PutPluralLetter( Model.Writers ))</div>
+            @foreach( var item in Model.Writers ) {
+                <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(item.WriterName)</div>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="span12">
+            <div class="row title">Actor@(PageHelper.PutPluralLetter( Model.Actors ))</div>
+            @foreach( var item in Model.Actors ) {
+                <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(item.ActorName)</div>
+            }
+        </div>
+    </div>
+</div>
+
+<br />

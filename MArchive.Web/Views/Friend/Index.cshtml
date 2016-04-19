@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Friends";
+}
+
+@PageHelper.WriteTitle("Friends", "")
+
+<div class="row">
+    <a href="@Url.Action( "SearchByUsername", "Friend" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-search"></i>
+            </div>
+            <h4>Search by Username</h4>
+        </div>
+    </a>
+    <a href="@Url.Action( "ListAll", "MovieList" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>All Movies In Database</h4>
+        </div>
+    </a>
+    <a href="@Url.Action( "ListThisYear", "MovieList" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>This Year's Movies</h4>
+        </div>
+    </a>
+    <a href="@Url.Action( "ListLastYear", "MovieList" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Last Year's Movies</h4>
+        </div>
+    </a>
+</div>

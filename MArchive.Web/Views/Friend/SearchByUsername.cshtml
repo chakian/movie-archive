@@ -1,0 +1,52 @@
+﻿@model MArchive.Web.Models.Friend.SearchByUsernameModel
+@{
+    ViewBag.Title = "Search By Username";
+}
+
+@PageHelper.WriteTitle( "Friends", "Search your friends by username" )
+
+<form class="form-horizontal" style="text-align:left" action="@Url.Action( "SearchByUsername", "Friend" )" method="post">
+    <fieldset>
+        <legend>Search Users</legend>
+
+        <div class="control-group">
+            <label class="control-label" for="SearchKeyword">Username</label>
+            <div class="controls">
+                <input id="SearchKeyword" name="SearchKeyword" type="text" value="@Model.SearchKeyword" placeholder="Username" class="input-xlarge">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="button1id">&nbsp;</label>
+            <div class="controls">
+                <button type="submit" id="Search" name="Submit" value="Search" class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    @{
+        if(Model.UserList != null && Model.UserList.Count> 0){
+            <div class="row" style="padding-bottom:20px; border: 2px solid #0094ff;">
+                <div class="span12">
+                @{
+                    foreach(var item in Model.UserList){
+                        <div class="row" style="margin:5px 10px 20px;">
+                            @*<div class="span2">AVATAR WILL BE HERE
+                                <a href="@urlHelper.Action("DetailView", "Movie", new { id = currentM.ID })">
+                                    <img src="@GetFullPathForImage(currentM.ImdbPosterPath)" style="max-height:150px; max-width:150px;" />
+                                </a>
+                            </div>*@
+                            <div class="span6" style="font-size:20px;">
+                                <a href="@Url.RouteUrl("UserProfile", new { username = item.Username })">
+                                    @item.Username
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+                </div>
+            </div>
+        } else if (string.IsNullOrEmpty( Model.SearchKeyword) == false) {
+            <div>Username not found</div>
+        }
+    }
+</form>

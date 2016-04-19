@@ -1,0 +1,176 @@
+﻿header, footer, nav, section
+{
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset
+{
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend
+{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea
+{
+    min-height: 75px;
+}
+
+.editor-label
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field
+{
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #f00;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+
+/* Bootstrap override */
+
+.container .row,
+.container .row .span1,
+.container .row .span2,
+.container .row .span3,
+.container .row .span4,
+.container .row .span5,
+.container .row .span6,
+.container .row .span7,
+.container .row .span8,
+.container .row .span9,
+.container .row .span10,
+.container .row .span11,
+.container .row .span12
+{
+    margin-left:0px;
+}
+
+
+/*  Mine  */
+.movieInfo
+{
+    text-align: left;
+}
+
+.movieInfo .block
+{
+    background-color: #dbdbdb;
+    color: black;
+}
+
+.movieInfo .blockeven
+{
+    background-color: #ededed;
+}
+
+.movieInfo .block .subText
+{
+    margin-left: 15px;
+}
+
+.movieInfo .poster
+{
+    text-align: center;
+    border: dashed 2px;
+}
+
+.movieInfo .title
+{
+    font-weight:bold;
+}
+
+#notification
+{
+    /*background-color: #bbdd33;*/
+    background-color: #fffbcc;
+    padding: 10px 0;
+}
+
+span#notificationText
+{
+    font-size: 1.1em;
+    color: #335555;
+    font-weight: bold;
+}
+
+.notificationDismiss
+{
+    float: right;
+    padding-right: 20px;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight:normal;
+}
+
+.validationSummaryContainer
+{
+    padding: 10px 0;
+    color: #335555;
+    font-weight:bold;
+}
+
+.greenBackground {
+	background: #d5ffce;
+	color: #556652;
+}
+.redBackground {
+	background-color: #ED9F9F;
+}
+
+/*Classes for row elements*/
+.FormRow {
+    width: 50%;
+}
+.FormInputCaptionColumn {
+    width: 30%;
+}
+.FormInputElementColumn {
+    width: 69%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.rowEven {
+    background-color: #d4d4d4;
+}

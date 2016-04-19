@@ -1,0 +1,37 @@
+﻿@model MArchive.Web.Models.List.ListDetailViewModel
+@{
+    ViewBag.Title = "List Details";
+}
+
+@PageHelper.WriteTitle( "Lists", "List Detail: " + Model.List.Name )
+
+@*<h4><a href="@Url.Action("EditList")">Edit</a></h4>*@
+<h4><a onclick="javascript: alert('later, later!'); return false;" href="#">Edit</a></h4>
+
+<div class="left">
+    @{
+        int index = 1;    
+        foreach (var item in Model.Movies)
+        {
+            <div class="row@(index % 2 == 0 ? " rowEven" : "")">
+                <div class="span1">@index.ToString()</div>
+                <div class="span1">
+                    <img class="glyphicon-up-arrow" />
+                    &nbsp;
+                    <img class="glyphicon-down-arrow" />
+                    &nbsp;
+                    <img class="glyphicon-delete" />
+                </div>
+                <div class="span3">
+                    <a href="@Url.Action("DetailView", "Movie", new { id= item.MovieID.ToString()})">@item.MovieName</a>
+                </div>
+                <div class="span1">
+                    @if(item.Watched){
+                        <img src="~/Content/img/eye-icon-14.png" alt="Watched" title="Watched" />
+                    }
+                </div>
+            </div>
+            index++;
+        }
+    }
+</div>

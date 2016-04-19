@@ -1,0 +1,66 @@
+﻿@model System.Collections.Generic.List<MArchive.Domain.Movie.UserListDO>
+@{
+    ViewBag.Title = "All Lists";
+}
+
+@PageHelper.WriteTitle( "Lists", "All lists" )
+
+@*Diğer ikonlar
+<i class="icon-eye-open"></i>
+<i class="icon-table"></i>
+<i class="icon-print"></i>
+<i class="icon-magic"></i>*@
+
+<div class="row">
+    <a href="@Url.Action( "ListAllInDiscs", "MovieList" )" class="centered">
+        <div class="service span3">
+
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Only Movies In Discs</h4>
+        </div>
+    </a>
+    <a href="@Url.Action( "ListAll", "MovieList" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>All Movies In Database</h4>
+        </div>
+    </a>
+    <a href="@Url.Action( "ListThisYear", "MovieList" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>This Year's Movies</h4>
+        </div>
+    </a>
+    <a href="@Url.Action( "ListLastYear", "MovieList" )" class="centered">
+        <div class="service span3">
+            <div class="icon-awesome">
+                <i class="icon-table"></i>
+            </div>
+            <h4>Last Year's Movies</h4>
+        </div>
+    </a>
+</div>
+
+<br />
+
+@if(Request.IsAuthenticated){
+    <div style="text-align:left;">
+        <div class="row">
+            <a href="@Url.Action( "CreateNewList", "MovieList" )"><h4>+ Create New List</h4></a>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <h5>
+                    <a href="@Url.Action("ViewList", new { id = item.ID })">@item.Name</a>
+                </h5>
+            </div>
+        }
+    </div>
+}

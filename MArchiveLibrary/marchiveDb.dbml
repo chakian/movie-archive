@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="marchive" Class="marchiveDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=marchive;Persist Security Info=True;User ID=sa" SettingsObjectName="MArchiveLibrary.Properties.Settings" SettingsPropertyName="marchiveConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblArchive" Member="tblArchives">
+    <Type Name="tblArchive">
+      <Column Name="archiveId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="archiveName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="path" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tblArchive_tblMovieArchive" Member="tblMovieArchives" ThisKey="archiveId" OtherKey="archiveId" Type="tblMovieArchive" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblWriter" Member="tblWriters">
+    <Type Name="tblWriter">
+      <Column Name="writerId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="writerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tblWriter_tblMovieWriter" Member="tblMovieWriters" ThisKey="writerId" OtherKey="writerId" Type="tblMovieWriter" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCast" Member="tblCasts">
+    <Type Name="tblCast">
+      <Column Name="castId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="castName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tblCast_tblMovieCast" Member="tblMovieCasts" ThisKey="castId" OtherKey="castId" Type="tblMovieCast" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDirector" Member="tblDirectors">
+    <Type Name="tblDirector">
+      <Column Name="directorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="directorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tblDirector_tblMovieDirector" Member="tblMovieDirectors" ThisKey="directorId" OtherKey="directorId" Type="tblMovieDirector" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblGenre" Member="tblGenres">
+    <Type Name="tblGenre">
+      <Column Name="genreId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="genreName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tblGenre_tblMovieGenre" Member="tblMovieGenres" ThisKey="genreId" OtherKey="genreId" Type="tblMovieGenre" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLanguage" Member="tblLanguages">
+    <Type Name="tblLanguage">
+      <Column Name="languageId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="languageName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tblLanguage_tblMovieLanguage" Member="tblMovieLanguages" ThisKey="languageId" OtherKey="languageId" Type="tblMovieLanguage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovie" Member="tblMovies">
+    <Type Name="tblMovie">
+      <Column Name="movieId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieEnglishName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="movieTurkishName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="movieOriginalName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="movieWatched" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="movieYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="movieMyRating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="movieImdbId" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="movieImdbRating" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="movieImdbPoster" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="imdbParsed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="insertDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblMovie_tblMovieArchive" Member="tblMovieArchives" ThisKey="movieId" OtherKey="movieId" Type="tblMovieArchive" />
+      <Association Name="tblMovie_tblMovieCast" Member="tblMovieCasts" ThisKey="movieId" OtherKey="movieId" Type="tblMovieCast" />
+      <Association Name="tblMovie_tblMovieDirector" Member="tblMovieDirectors" ThisKey="movieId" OtherKey="movieId" Type="tblMovieDirector" />
+      <Association Name="tblMovie_tblMovieGenre" Member="tblMovieGenres" ThisKey="movieId" OtherKey="movieId" Type="tblMovieGenre" />
+      <Association Name="tblMovie_tblMovieLanguage" Member="tblMovieLanguages" ThisKey="movieId" OtherKey="movieId" Type="tblMovieLanguage" />
+      <Association Name="tblMovie_tblMovieWriter" Member="tblMovieWriters" ThisKey="movieId" OtherKey="movieId" Type="tblMovieWriter" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovieArchive" Member="tblMovieArchives">
+    <Type Name="tblMovieArchive">
+      <Column Name="movieArchiveId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="archiveId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="resolution" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="fileExtension" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="path" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="tblArchive_tblMovieArchive" Member="tblArchive" ThisKey="archiveId" OtherKey="archiveId" Type="tblArchive" IsForeignKey="true" />
+      <Association Name="tblMovie_tblMovieArchive" Member="tblMovie" ThisKey="movieId" OtherKey="movieId" Type="tblMovie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovieCast" Member="tblMovieCasts">
+    <Type Name="tblMovieCast">
+      <Column Name="movieCastId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="castId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblCast_tblMovieCast" Member="tblCast" ThisKey="castId" OtherKey="castId" Type="tblCast" IsForeignKey="true" />
+      <Association Name="tblMovie_tblMovieCast" Member="tblMovie" ThisKey="movieId" OtherKey="movieId" Type="tblMovie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovieDirector" Member="tblMovieDirectors">
+    <Type Name="tblMovieDirector">
+      <Column Name="movieDirectorId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="directorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblDirector_tblMovieDirector" Member="tblDirector" ThisKey="directorId" OtherKey="directorId" Type="tblDirector" IsForeignKey="true" />
+      <Association Name="tblMovie_tblMovieDirector" Member="tblMovie" ThisKey="movieId" OtherKey="movieId" Type="tblMovie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovieGenre" Member="tblMovieGenres">
+    <Type Name="tblMovieGenre">
+      <Column Name="movieGenreId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="genreId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblGenre_tblMovieGenre" Member="tblGenre" ThisKey="genreId" OtherKey="genreId" Type="tblGenre" IsForeignKey="true" />
+      <Association Name="tblMovie_tblMovieGenre" Member="tblMovie" ThisKey="movieId" OtherKey="movieId" Type="tblMovie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovieLanguage" Member="tblMovieLanguages">
+    <Type Name="tblMovieLanguage">
+      <Column Name="movieLanguageId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="languageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblLanguage_tblMovieLanguage" Member="tblLanguage" ThisKey="languageId" OtherKey="languageId" Type="tblLanguage" IsForeignKey="true" />
+      <Association Name="tblMovie_tblMovieLanguage" Member="tblMovie" ThisKey="movieId" OtherKey="movieId" Type="tblMovie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMovieWriter" Member="tblMovieWriters">
+    <Type Name="tblMovieWriter">
+      <Column Name="movieWriterId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="writerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblMovie_tblMovieWriter" Member="tblMovie" ThisKey="movieId" OtherKey="movieId" Type="tblMovie" IsForeignKey="true" />
+      <Association Name="tblWriter_tblMovieWriter" Member="tblWriter" ThisKey="writerId" OtherKey="writerId" Type="tblWriter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblRating" Member="tblRatings">
+    <Type Name="tblRating">
+      <Column Name="ratingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="movieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="watched" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="rating" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblUser" Member="tblUsers">
+    <Type Name="tblUser">
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userUsername" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userPassword" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="userName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="userLastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

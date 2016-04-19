@@ -1,0 +1,18 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Layout = "_ErrorLayout";
+    ViewBag.Title = "An Error Occured!";
+}
+
+<div class="centered">
+    <h4>An error occured while processing your request.</h4>
+    <div class="alert alert-error text-center">
+        @Model.Exception.Message
+    </div>
+    <span>If this is the first time you get this error, please go back and retry.
+        <br />
+        If the error persists, please contact the system administrator.
+        <br />
+        @Html.ActionLink("Click here to to to home page", "Index", "Home", new { area = "" }, null)
+    </span>
+</div>

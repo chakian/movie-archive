@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 17.75" name="marchiveDb">
+  <DataContextMoniker Name="/marchiveDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a4444dd4-8d34-46b1-90ce-90aaef118648" absoluteBounds="3.75, 16.125, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblArchive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58404d71-47d8-4e12-9962-414e929101da" absoluteBounds="3.765, 16.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b7064edb-088f-439c-8305-827e7575d87f" absoluteBounds="3.75, 1.125, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblWriter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a03fbf5-691f-48fc-86d8-3b31939cf9da" absoluteBounds="3.765, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b22a5925-6ab6-441d-9cee-e0d6ad3816dc" absoluteBounds="0.75, 11.125, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblCast" />
+      <nestedChildShapes>
+        <elementListCompartment Id="01ff5ae0-9d2d-40e0-9c41-c732b7174d31" absoluteBounds="0.765, 11.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ec527aa9-57f6-42b0-bb61-6c46595e29b9" absoluteBounds="0.75, 3.125, 2, 1.193992513020834">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblDirector" />
+      <nestedChildShapes>
+        <elementListCompartment Id="23908f74-1ea4-4f82-9b98-fb86e3c2524b" absoluteBounds="0.765, 3.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="945934c2-000c-4a72-a1de-ed5b5a0f83b8" absoluteBounds="0.75, 13.125, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblGenre" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c08e660-b080-42d3-ad4d-eaf4fa44fb5b" absoluteBounds="0.765, 13.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b7815f21-e33c-4fa3-9f49-47b4f4bc6e77" absoluteBounds="3.75, 13.125, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblLanguage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56b8fc92-60e2-4821-a6d7-5d468e4702f8" absoluteBounds="3.765, 13.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" absoluteBounds="0.75, 6.125, 2, 3.3093082682291675">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovie" />
+      <nestedChildShapes>
+        <elementListCompartment Id="79746dff-f7db-4f57-95b3-2e4c8ae7d0e6" absoluteBounds="0.765, 6.585, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6472bd99-b9a3-44a5-b940-e8e72dbe5871" absoluteBounds="6.5, 9.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovieArchive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f577c46e-def1-40aa-a730-9a4c6c1c48d2" absoluteBounds="6.515, 10.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="38e8e1fd-f8f1-43a4-beea-9c883c89f4bd" absoluteBounds="3.5, 7.125, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovieCast" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d6da136d-0457-48f5-83c1-1d9908183b9a" absoluteBounds="3.515, 7.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1a0e85d3-b238-4079-8fa6-ea004628e8d2" absoluteBounds="3.5, 4.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovieDirector" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be9d5347-8b63-4607-929d-3eca5f555415" absoluteBounds="3.515, 4.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76709616-a604-45ac-830e-489fa0449530" absoluteBounds="3.5, 10.125, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovieGenre" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8065f8fe-ea6a-4c8c-9c12-93ef89b2fb6a" absoluteBounds="3.515, 10.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eeddacdd-a64b-4739-b048-3cad5e360604" absoluteBounds="6.5, 7.125, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovieLanguage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12dcccd5-dc1c-43c5-8916-e03bcf1d8979" absoluteBounds="6.515, 7.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7372a82e-1716-4c2a-b113-4e25124ef08d" absoluteBounds="6.5, 4.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblMovieWriter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c392bc2e-1155-4ef5-a915-d91d6037914d" absoluteBounds="6.515, 4.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ffb23ca0-8c8c-47bc-b90d-aa408d50a718" absoluteBounds="6.75, 0.75, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblRating" />
+      <nestedChildShapes>
+        <elementListCompartment Id="991005b2-69c9-45b0-92a4-455f9b037b8f" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6a40cd4b-cf5e-42cb-b8a0-6b02521de19b" absoluteBounds="9.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/marchiveDbDataContext/tblUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8982b5c5-667e-4840-9939-1ffc5e6d636f" absoluteBounds="9.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 16.8181469726563); (7.5 : 16.8181469726563); (7.5 : 11.7131982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblArchive/tblArchive_tblMovieArchive" />
+      <nodes>
+        <classShapeMoniker Id="a4444dd4-8d34-46b1-90ce-90aaef118648" />
+        <classShapeMoniker Id="6472bd99-b9a3-44a5-b940-e8e72dbe5871" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.40046111438301); (3 : 9.65046111438301); (3 : 9.375); (3.19791666666667 : 9.375 : JumpStart); (3.36458333333333 : 9.375 : JumpEnd); (6.125 : 9.375); (6.5 : 9.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblMovie/tblMovie_tblMovieArchive" />
+      <nodes>
+        <classShapeMoniker Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" />
+        <classShapeMoniker Id="6472bd99-b9a3-44a5-b940-e8e72dbe5871" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 11.1562264964944); (3.28125 : 10.6249764964944); (3.28125 : 7.81814697265625); (3.5 : 7.81814697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblCast/tblCast_tblMovieCast" />
+      <nodes>
+        <classShapeMoniker Id="b22a5925-6ab6-441d-9cee-e0d6ad3816dc" />
+        <classShapeMoniker Id="38e8e1fd-f8f1-43a4-beea-9c883c89f4bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.40907348632812); (3.5 : 7.40907348632812)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblMovie/tblMovie_tblMovieCast" />
+      <nodes>
+        <classShapeMoniker Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" />
+        <classShapeMoniker Id="38e8e1fd-f8f1-43a4-beea-9c883c89f4bd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.6249995); (4.5 : 3.6249995); (4.5 : 4.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblDirector/tblDirector_tblMovieDirector" />
+      <nodes>
+        <classShapeMoniker Id="ec527aa9-57f6-42b0-bb61-6c46595e29b9" />
+        <classShapeMoniker Id="1a0e85d3-b238-4079-8fa6-ea004628e8d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.15576823076923); (3.1875 : 5.71826823076923); (3.1875 : 5.8237939453125); (3.5 : 5.5112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblMovie/tblMovie_tblMovieDirector" />
+      <nodes>
+        <classShapeMoniker Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" />
+        <classShapeMoniker Id="1a0e85d3-b238-4079-8fa6-ea004628e8d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 13.125); (3.125 : 12.75); (3.125 : 10.8181469726562); (3.5 : 10.8181469726562)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblGenre/tblGenre_tblMovieGenre" />
+      <nodes>
+        <classShapeMoniker Id="945934c2-000c-4a72-a1de-ed5b5a0f83b8" />
+        <classShapeMoniker Id="76709616-a604-45ac-830e-489fa0449530" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.4050764989984); (3.1875 : 9.8425764989984); (3.1875 : 10.4403214863281); (3.19791666666667 : 10.4403214863281 : JumpStart); (3.36458333333333 : 10.4403214863281 : JumpEnd); (3.5 : 10.4403214863281)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblMovie/tblMovie_tblMovieGenre" />
+      <nodes>
+        <classShapeMoniker Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" />
+        <classShapeMoniker Id="76709616-a604-45ac-830e-489fa0449530" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 13.125); (6.125 : 12.75); (6.125 : 7.81814697265625); (6.5 : 7.81814697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblLanguage/tblLanguage_tblMovieLanguage" />
+      <nodes>
+        <classShapeMoniker Id="b7815f21-e33c-4fa3-9f49-47b4f4bc6e77" />
+        <classShapeMoniker Id="eeddacdd-a64b-4739-b048-3cad5e360604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.94314747265625); (3.19791666666667 : 8.94314747265625 : JumpStart); (3.36458333333333 : 8.94314747265625 : JumpEnd); (6.04166666666667 : 8.94314747265625 : JumpStart); (6.20833333333333 : 8.94314747265625 : JumpEnd); (7.5 : 8.94314747265625); (7.5 : 8.5112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblMovie/tblMovie_tblMovieLanguage" />
+      <nodes>
+        <classShapeMoniker Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" />
+        <classShapeMoniker Id="eeddacdd-a64b-4739-b048-3cad5e360604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.16038361538462); (2.875 : 5.75); (2.875 : 5.8862939453125); (2.9361409521234 : 5.8862939453125 : JumpStart); (3.10280761879006 : 5.8862939453125 : JumpEnd); (6.125 : 5.8862939453125); (6.5 : 5.5112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblMovie/tblMovie_tblMovieWriter" />
+      <nodes>
+        <classShapeMoniker Id="37497ddb-af48-4391-bc8e-a9dd58773dd1" />
+        <classShapeMoniker Id="7372a82e-1716-4c2a-b113-4e25124ef08d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 2.31807305724159); (6.125 : 2.69307305724159); (6.125 : 4.78689497265625); (6.5 : 4.78689497265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/marchiveDbDataContext/tblWriter/tblWriter_tblMovieWriter" />
+      <nodes>
+        <classShapeMoniker Id="b7064edb-088f-439c-8305-827e7575d87f" />
+        <classShapeMoniker Id="7372a82e-1716-4c2a-b113-4e25124ef08d" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

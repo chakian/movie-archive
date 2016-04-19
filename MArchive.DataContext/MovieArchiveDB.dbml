@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MovieArchive" Class="MovieArchiveDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=MovieArchive;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=5;Max Pool Size=100" SettingsObjectName="MArchive.DataContext.Properties.Settings" SettingsPropertyName="MovieArchiveConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.INF_Actor" Member="INF_Actors">
+    <Type Name="INF_Actor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="INF_Actor_MOV_M_Actor" Member="MOV_M_Actors" ThisKey="ID" OtherKey="ActorID" Type="MOV_M_Actor" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="User_MOV_M_UserRating" Member="MOV_M_UserRatings" ThisKey="ID" OtherKey="UserID" Type="MOV_M_UserRating" />
+      <Association Name="User_MOV_UserMovie" Member="MOV_UserMovies" ThisKey="ID" OtherKey="UserID" Type="MOV_UserMovie" />
+      <Association Name="User_USR_Archive" Member="USR_Archives" ThisKey="ID" OtherKey="UserID" Type="USR_Archive" />
+      <Association Name="User_USR_List" Member="USR_Lists" ThisKey="ID" OtherKey="UserID" Type="USR_List" />
+      <Association Name="User_USR_Friend" Member="USR_Friends" ThisKey="ID" OtherKey="UserID" Type="USR_Friend" />
+      <Association Name="User_USR_Friend1" Member="USR_Friends1" ThisKey="ID" OtherKey="FriendUserID" Type="USR_Friend" />
+      <Association Name="User_USR_FriendRequest" Member="USR_FriendRequests" ThisKey="ID" OtherKey="RequestCreatorUserID" Type="USR_FriendRequest" />
+      <Association Name="User_USR_FriendRequest1" Member="USR_FriendRequests1" ThisKey="ID" OtherKey="RequestSentToUserID" Type="USR_FriendRequest" />
+      <Association Name="User_USR_UserListAuthorization" Member="USR_UserListAuthorizations" ThisKey="ID" OtherKey="UserID" Type="USR_UserListAuthorization" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INF_Director" Member="INF_Directors">
+    <Type Name="INF_Director">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="INF_Director_MOV_M_Director" Member="MOV_M_Directors" ThisKey="ID" OtherKey="DirectorID" Type="MOV_M_Director" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INF_Language" Member="INF_Languages">
+    <Type Name="INF_Language">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="INF_Language_MOV_M_Language" Member="MOV_M_Languages" ThisKey="ID" OtherKey="LanguageID" Type="MOV_M_Language" />
+      <Association Name="INF_Language_MOV_M_Name" Member="MOV_M_Names" ThisKey="ID" OtherKey="LanguageID" Type="MOV_M_Name" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INF_Type" Member="INF_Types">
+    <Type Name="INF_Type">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="INF_Type_MOV_M_Type" Member="MOV_M_Types" ThisKey="ID" OtherKey="TypeID" Type="MOV_M_Type" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INF_Writer" Member="INF_Writers">
+    <Type Name="INF_Writer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="INF_Writer_MOV_M_Writer" Member="MOV_M_Writers" ThisKey="ID" OtherKey="WriterID" Type="MOV_M_Writer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Actor" Member="MOV_M_Actors">
+    <Type Name="MOV_M_Actor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="INF_Actor_MOV_M_Actor" Member="INF_Actor" ThisKey="ActorID" OtherKey="ID" Type="INF_Actor" IsForeignKey="true" />
+      <Association Name="MOV_M_Movie_MOV_M_Actor" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Archive" Member="MOV_M_Archives">
+    <Type Name="MOV_M_Archive">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ArchiveID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Resolution" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="FileExtension" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="MOV_M_Movie_MOV_M_Archive" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+      <Association Name="USR_Archive_MOV_M_Archive" Member="USR_Archive" ThisKey="ArchiveID" OtherKey="ID" Type="USR_Archive" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Director" Member="MOV_M_Directors">
+    <Type Name="MOV_M_Director">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DirectorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="INF_Director_MOV_M_Director" Member="INF_Director" ThisKey="DirectorID" OtherKey="ID" Type="INF_Director" IsForeignKey="true" />
+      <Association Name="MOV_M_Movie_MOV_M_Director" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Language" Member="MOV_M_Languages">
+    <Type Name="MOV_M_Language">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="INF_Language_MOV_M_Language" Member="INF_Language" ThisKey="LanguageID" OtherKey="ID" Type="INF_Language" IsForeignKey="true" />
+      <Association Name="MOV_M_Movie_MOV_M_Language" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Movie" Member="MOV_M_Movies">
+    <Type Name="MOV_M_Movie">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImdbID" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ImdbRating" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ImdbPoster" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ImdbParsed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ImdbLastParseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InsertUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MOV_M_Movie_MOV_M_Actor" Member="MOV_M_Actors" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Actor" />
+      <Association Name="MOV_M_Movie_MOV_M_Archive" Member="MOV_M_Archives" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Archive" />
+      <Association Name="MOV_M_Movie_MOV_M_Director" Member="MOV_M_Directors" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Director" />
+      <Association Name="MOV_M_Movie_MOV_M_Language" Member="MOV_M_Languages" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Language" />
+      <Association Name="MOV_M_Movie_MOV_M_Name" Member="MOV_M_Names" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Name" />
+      <Association Name="MOV_M_Movie_MOV_M_Type" Member="MOV_M_Types" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Type" />
+      <Association Name="MOV_M_Movie_MOV_M_UserRating" Member="MOV_M_UserRatings" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_UserRating" />
+      <Association Name="MOV_M_Movie_MOV_M_Writer" Member="MOV_M_Writers" ThisKey="ID" OtherKey="MovieID" Type="MOV_M_Writer" />
+      <Association Name="MOV_M_Movie_MOV_UserMovie" Member="MOV_UserMovies" ThisKey="ID" OtherKey="MovieID" Type="MOV_UserMovie" />
+      <Association Name="MOV_M_Movie_USR_ListMovie" Member="USR_ListMovies" ThisKey="ID" OtherKey="MovieID" Type="USR_ListMovie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Names" Member="MOV_M_Names">
+    <Type Name="MOV_M_Name">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="INF_Language_MOV_M_Name" Member="INF_Language" ThisKey="LanguageID" OtherKey="ID" Type="INF_Language" IsForeignKey="true" />
+      <Association Name="MOV_M_Movie_MOV_M_Name" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Types" Member="MOV_M_Types">
+    <Type Name="MOV_M_Type">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MOV_M_Movie_MOV_M_Type" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+      <Association Name="INF_Type_MOV_M_Type" Member="INF_Type" ThisKey="TypeID" OtherKey="ID" Type="INF_Type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_UserRating" Member="MOV_M_UserRatings">
+    <Type Name="MOV_M_UserRating">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Watched" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="MOV_M_Movie_MOV_M_UserRating" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+      <Association Name="User_MOV_M_UserRating" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_M_Writer" Member="MOV_M_Writers">
+    <Type Name="MOV_M_Writer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WriterID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MOV_M_Movie_MOV_M_Writer" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+      <Association Name="INF_Writer_MOV_M_Writer" Member="INF_Writer" ThisKey="WriterID" OtherKey="ID" Type="INF_Writer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOV_UserMovie" Member="MOV_UserMovies">
+    <Type Name="MOV_UserMovie">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InsertUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MOV_M_Movie_MOV_UserMovie" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+      <Association Name="User_MOV_UserMovie" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MoviesNotInHardDisk" Member="MoviesNotInHardDisks">
+    <Type Name="MoviesNotInHardDisk">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImdbID" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ImdbRating" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ImdbPoster" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ImdbParsed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ImdbLastParseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InsertUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vUserListMoviesDetail" Member="vUserListMoviesDetails">
+    <Type Name="vUserListMoviesDetail">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ListID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ListName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ListMovieID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MovieName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsChecked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Watched" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieActor" Member="vMovieActors">
+    <Type Name="vMovieActor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieDirector" Member="vMovieDirectors">
+    <Type Name="vMovieDirector">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DirectorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DirectorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieLanguage" Member="vMovieLanguages">
+    <Type Name="vMovieLanguage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieName" Member="vMovieNames">
+    <Type Name="vMovieName">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieType" Member="vMovieTypes">
+    <Type Name="vMovieType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieUserRating" Member="vMovieUserRatings">
+    <Type Name="vMovieUserRating">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Watched" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieWriter" Member="vMovieWriters">
+    <Type Name="vMovieWriter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WriterID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WriterName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_Archive" Member="USR_Archives">
+    <Type Name="USR_Archive">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="USR_Archive_MOV_M_Archive" Member="MOV_M_Archives" ThisKey="ID" OtherKey="ArchiveID" Type="MOV_M_Archive" />
+      <Association Name="User_USR_Archive" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_List" Member="USR_Lists">
+    <Type Name="USR_List">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="USR_List_USR_ListMovie" Member="USR_ListMovies" ThisKey="ID" OtherKey="ListID" Type="USR_ListMovie" />
+      <Association Name="USR_List_USR_UserListAuthorization" Member="USR_UserListAuthorizations" ThisKey="ID" OtherKey="UserListID" Type="USR_UserListAuthorization" />
+      <Association Name="User_USR_List" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_ListMovie" Member="USR_ListMovies">
+    <Type Name="USR_ListMovie">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ListID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsChecked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MOV_M_Movie_USR_ListMovie" Member="MOV_M_Movie" ThisKey="MovieID" OtherKey="ID" Type="MOV_M_Movie" IsForeignKey="true" />
+      <Association Name="USR_List_USR_ListMovie" Member="USR_List" ThisKey="ListID" OtherKey="ID" Type="USR_List" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMovieArchive" Member="vMovieArchives">
+    <Type Name="vMovieArchive">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ArchiveID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Resolution" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="FileExtension" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ArchiveName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ArchivePath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_Friend" Member="USR_Friends">
+    <Type Name="USR_Friend">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FriendUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="User_USR_Friend" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="User_USR_Friend1" Member="User1" ThisKey="FriendUserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_FriendRequest" Member="USR_FriendRequests">
+    <Type Name="USR_FriendRequest">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RequestCreatorUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequestSentToUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequestStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="User_USR_FriendRequest" Member="User" ThisKey="RequestCreatorUserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="User_USR_FriendRequest1" Member="User1" ThisKey="RequestSentToUserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="USR_FriendRequestStatus_USR_FriendRequest" Member="USR_FriendRequestStatus" ThisKey="RequestStatus" OtherKey="ID" Type="USR_FriendRequestStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_FriendRequestStatus" Member="USR_FriendRequestStatus">
+    <Type Name="USR_FriendRequestStatus">
+      <Column Name="ObligatoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="USR_FriendRequestStatus_USR_FriendRequest" Member="USR_FriendRequests" ThisKey="ID" OtherKey="RequestStatus" Type="USR_FriendRequest" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_UserListAuthorization" Member="USR_UserListAuthorizations">
+    <Type Name="USR_UserListAuthorization">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserListID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorizationTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="USR_List_USR_UserListAuthorization" Member="USR_List" ThisKey="UserListID" OtherKey="ID" Type="USR_List" IsForeignKey="true" />
+      <Association Name="User_USR_UserListAuthorization" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="USR_UserListAuthorizationType_USR_UserListAuthorization" Member="USR_UserListAuthorizationType" ThisKey="AuthorizationTypeID" OtherKey="ID" Type="USR_UserListAuthorizationType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_UserListAuthorizationType" Member="USR_UserListAuthorizationTypes">
+    <Type Name="USR_UserListAuthorizationType">
+      <Column Name="RequiredPKID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="USR_UserListAuthorizationType_USR_UserListAuthorization" Member="USR_UserListAuthorizations" ThisKey="ID" OtherKey="AuthorizationTypeID" Type="USR_UserListAuthorization" />
+    </Type>
+  </Table>
+  <Function Name="dbo.ResetImdbId" Method="ResetImdbId">
+    <Parameter Name="MovieID" Parameter="movieID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -1,0 +1,32 @@
+﻿@helper WriteTitle( string main, string sub ) {
+    <!-- Page Title -->
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <i class="icon-tasks page-title-icon"></i>
+                    <h2>@(main + (string.IsNullOrEmpty(sub)==false ? " /" : ""))</h2>
+                    <p>@(new HtmlString(sub))</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@helper PutPluralLetter( System.Collections.IList list, string pluralLetter = "s" ) {if( list.Count > 1 ) {<text>@pluralLetter</text>}}
+
+@helper WriteRadioBox(string name, string value, string title, bool isChecked){
+    if(isChecked){
+        <label><input type="radio" name="@name" value="@value" checked="checked"><text>@title</text></label>
+    }else{
+        <label><input type="radio" name="@name" value="@value"><text>@title</text></label>
+    }
+}
+
+@helper WriteCheckBox(string name, string value, string title, bool isChecked){
+    if(isChecked){
+        <label><input type="checkbox" name="@name" value="@value" checked="checked"><text>@title</text></label>
+    }else{
+        <label><input type="checkbox" name="@name" value="@value"><text>@title</text></label>
+    }
+}

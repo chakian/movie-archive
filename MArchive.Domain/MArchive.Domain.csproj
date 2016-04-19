@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D92511EA-C93E-4460-9570-9A5B5C7845E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MArchive.Domain</RootNamespace>
+    <AssemblyName>MArchive.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\AuditableDO.cs" />
+    <Compile Include="Base\BaseDO.cs" />
+    <Compile Include="Base\LookupBaseDO.cs" />
+    <Compile Include="Base\MovieInfoDO.cs" />
+    <Compile Include="Lookup\ActorDO.cs" />
+    <Compile Include="Lookup\DirectorDO.cs" />
+    <Compile Include="Lookup\LanguageDO.cs" />
+    <Compile Include="Lookup\WriterDO.cs" />
+    <Compile Include="Lookup\ArchiveDO.cs" />
+    <Compile Include="Lookup\TypeDO.cs" />
+    <Compile Include="MArchiveJsonResult.cs" />
+    <Compile Include="Message\BaseResponseMessage.cs" />
+    <Compile Include="Message\GenericResponseMessage.cs" />
+    <Compile Include="Message\MessageCodes.cs" />
+    <Compile Include="Movie\MovieActorDO.cs" />
+    <Compile Include="Movie\MovieUserArchiveDO.cs" />
+    <Compile Include="Movie\MovieDetailDO.cs" />
+    <Compile Include="Movie\MovieDirectorDO.cs" />
+    <Compile Include="Movie\MovieDO.cs" />
+    <Compile Include="Movie\MovieLanguageDO.cs" />
+    <Compile Include="Movie\MovieListDO.cs" />
+    <Compile Include="Movie\MovieNameDO.cs" />
+    <Compile Include="Movie\MovieTypeDO.cs" />
+    <Compile Include="Movie\MovieUserRatingDO.cs" />
+    <Compile Include="Movie\MovieWriterDO.cs" />
+    <Compile Include="User\FriendStatus.cs" />
+    <Compile Include="User\UserDO.cs" />
+    <Compile Include="Movie\UserListDetailDO.cs" />
+    <Compile Include="Movie\UserListDO.cs" />
+    <Compile Include="Movie\UserListMovieDO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\UserFriendDO.cs" />
+    <Compile Include="User\UserFriendRequestDO.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

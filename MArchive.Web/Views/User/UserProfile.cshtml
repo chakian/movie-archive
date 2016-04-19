@@ -1,0 +1,24 @@
+﻿@model MArchive.Web.Models.User.ProfileModel
+@{
+    ViewBag.Title = Model.User.Username;
+}
+
+@PageHelper.WriteTitle( "Users", Model.User.Username )
+
+<div class="row">
+    @{
+        if(Model.IsYou == false){
+            if(Model.IsYourFriend){
+                <div>You are friends</div>
+            } else if(Model.IsRequestSent){
+                <div>Friend request is pending</div>
+            } else if(Model.IsRequestPendingApproval){
+                <div>Friend request is pending your approval. <a href="@Url.Action("AcceptFriendRequest", "Friend", new { userId = Model.User.ID })">Accept</a> | <a href="@Url.Action("RejectFriendRequest", "Friend", new { userId = Model.User.ID })">Reject</a></div>
+            } else if(Model.FriendStatus.RequestStatusType != MArchive.BL.FriendStatus.FriendRequestStatusType.TheyBlocked){
+                <div><a href="@Url.Action("AddFriend", "Friend", new { userId = Model.User.ID })">Add as friend</a></div>
+            } 
+        }else{
+            <div><i>Edit profile</i></div>
+        }
+    }
+</div>

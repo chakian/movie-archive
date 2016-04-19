@@ -1,0 +1,119 @@
+﻿@using System.Web.Mvc;
+
+@helper GetFullPathForImage( string imageName ){
+    var urlHelper = new System.Web.Mvc.UrlHelper(Request.RequestContext);
+    @urlHelper.Action(imageName, System.Configuration.ConfigurationManager.AppSettings["relativeWebSiteImageController"])
+}
+
+@helper WriteBrowseSearchList(MArchive.Web.Models.Browse.BrowseViewModel model){
+    var urlh = new System.Web.Mvc.UrlHelper(Request.RequestContext);
+    
+    <form method="post" action="@urlh.Action("Index", "Browse")">
+        <input type="hidden" name="CurrentPage" value="@model.CurrentPage" />
+        <div class="row">Movie Name</div>
+        <div class="row"><input type="text" id="filterMovieName" name="Filters.Name.FilterValue" value="@model.Filters.Name.FilterValue" /></div>
+        <br />
+        <div class="row">Year</div>
+        <div class="row"><input type="number" id="filterMovieYear" name="Filters.Year.FilterValue" value="@model.Filters.Year.FilterValue" /></div>
+        <br />
+        <div class="row">IMDb Rating</div>
+        <div class="row"><input type="text" id="filterMovieImdbRating" name="Filters.ImdbRating.FilterValue" value="@model.Filters.ImdbRating.FilterValue" /></div>
+        <br />
+        <div class="row">I have watched</div>
+        <div class="row">
+            @PageHelper.WriteRadioBox("Filters.IHaveWatched.FilterValue", "All", "All", model.Filters.IHaveWatched.FilterValue == "All")
+            @PageHelper.WriteRadioBox("Filters.IHaveWatched.FilterValue", "Yes", "Yes", model.Filters.IHaveWatched.FilterValue == "Yes")
+            @PageHelper.WriteRadioBox("Filters.IHaveWatched.FilterValue", "No", "No", model.Filters.IHaveWatched.FilterValue == "No")
+        </div>
+        <br />
+        <div class="row">My Rating</div>
+        <div class="row"><input type="text" id="filterMovieMyRating" name="Filters.MyRating.FilterValue" value="@model.Filters.MyRating.FilterValue" /></div>
+        <br />
+        <div class="row">Movie Type</div>
+        @foreach (var item in model.MovieTypes)
+        {
+            <div class="row">
+                @PageHelper.WriteCheckBox("Filters.MovieType", @item.ID.ToString(), @item.Name, model.Filters.MovieType.Contains(item.ID.ToString()))
+            </div>
+        }
+        <br />
+        <div class="row"><input type="submit" title="Filter" /></div>
+    </form>
+}
+
+@helper WritePagedMovieBrowsingList(System.Collections.Generic.List<MArchive.Domain.Movie.MovieDO> list, int currentPage, int itemCountPerPage = 10){
+    var urlHelper = new System.Web.Mvc.UrlHelper(Request.RequestContext);
+    
+    int totalItemCount = list.Count;
+    int pageCount = totalItemCount / itemCountPerPage;
+    if(totalItemCount % itemCountPerPage != 0){
+        pageCount++;
+    }
+    
+    int startIndex = (itemCountPerPage * (currentPage - 1));
+    int endIndex = startIndex + itemCountPerPage - 1;
+    if(endIndex + 1 > list.Count){
+        endIndex = list.Count - 1;
+    }
+    
+    for(int i = startIndex; i<= endIndex; i++){
+        MArchive.Domain.Movie.MovieDO currentM = list[i];
+        <div class="row" style="padding-bottom:20px; border: 2px solid #0094ff;">
+            <div class="span2">
+                <a href="@urlHelper.Action("DetailView", "Movie", new { id = currentM.ID })">
+                    <img src="@GetFullPathForImage(currentM.ImdbPosterPath)" style="max-height:150px; max-width:150px;" />
+                </a>
+            </div>
+            <div class="span6" style="font-size:20px;">
+                <div class="row">
+                    <a href="@urlHelper.Action("DetailView", "Movie", new { id = currentM.ID })">
+                        @currentM.OriginalName (@currentM.Year)
+                    </a>
+                </div>
+                @if(string.IsNullOrEmpty( currentM.ImdbID )==false){
+                    <div class="row">
+                        <a href="@currentM.ImdbPageUrl" target="_blank">IMDb Rating: @currentM.ImdbRating</a>
+                    </div>
+                } else {
+                    <div class="row">IMDb Rating: -</div>
+                }
+            </div>
+        </div>
+    }
+    
+    @WritePaging(currentPage, itemCountPerPage, pageCount)
+}
+
+@helper WritePaging(int currentPage, int itemCountPerPage, int pageCount){
+    <div class="row">@pageCount Pages</div>
+    <div class="row">
+        @{var urlHelper = new System.Web.Mvc.UrlHelper(Request.RequestContext);}
+        @if(currentPage > 1){
+            <span><a href="@urlHelper.Action("Index", "Browse", new { page = (currentPage-1) })">&lt; Previous</a>&nbsp;&nbsp;</span>
+        }
+        @{
+            int pagingStartIndex = 1;
+            int pagingEndIndex = pageCount;
+            if(pageCount > 10){
+                if(currentPage - 3 < 1){
+                    pagingStartIndex = 1;
+                }else{
+                    pagingStartIndex = currentPage - 3;
+                }
+                
+                if(pagingStartIndex+9 > pageCount){
+                    pagingEndIndex = pageCount;
+                    pagingStartIndex = pageCount - 9;
+                }else{
+                    pagingEndIndex = pagingStartIndex + 9;
+                }
+            }
+        }
+        @for(int i = pagingStartIndex; i <= pagingEndIndex; i++){
+            <span>&nbsp;<a href="@urlHelper.Action("Index", "Browse", new { page = (i) })">@((i).ToString())</a>&nbsp;</span>
+        }
+        @if(currentPage < pageCount){
+            <span>&nbsp;&nbsp;<a href="@urlHelper.Action("Index", "Browse", new { page = (currentPage+1) })">Next &gt;</a></span>
+        }
+    </div>
+}

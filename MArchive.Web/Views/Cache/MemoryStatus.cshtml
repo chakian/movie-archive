@@ -1,0 +1,45 @@
+﻿@model com.cagdaskorkut.utility.Caching.CacheDTO
+@{
+    ViewBag.Title = "Memory Status";
+}
+
+@PageHelper.WriteTitle("Cache", "Memory Status")
+
+@if (Model.CacheList.Count == 0)
+{
+    <p>Cache is empty</p>
+}
+else
+{ 
+    <a href="~/Cache/InvalidateAll" class="btn btn-danger" confirm="Are you sure?">Invalidate ALL cache</a> 
+}
+<table class="table table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>Invalidate</th>
+            <th colspan="2">Cache Name</th>
+        </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Item</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cacheObj in Model.CacheList)
+        {
+            <tr class="warning">
+                <td>@Html.ActionLink("Invalidate", "Invalidate", "Cache", new { cacheName = cacheObj.Key }, new { confirm = "Are you sure?"})</td>
+                <td colspan="2">@cacheObj.Key</td>
+            </tr>
+            foreach (KeyValuePair<string, object> cachedItem in cacheObj.Value)
+            {
+            <tr>
+                <td>&nbsp;</td>
+                <td>@cachedItem.Key</td>
+                <td>@cachedItem.Value</td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
