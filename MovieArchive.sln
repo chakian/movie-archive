@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MArchive.Web.Mvc", "MArchiv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MArchiveAngularWeb", "MArchiveAngularWeb\MArchiveAngularWeb.csproj", "{105A86E7-1DF2-4A88-BD21-D03A4FF1A73E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.API", "Authentication.API\Authentication.API.csproj", "{69DE9507-0340-437C-8283-1A938DEB60B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -253,6 +255,30 @@ Global
 		{105A86E7-1DF2-4A88-BD21-D03A4FF1A73E}.Release|x64.Build.0 = Release|Any CPU
 		{105A86E7-1DF2-4A88-BD21-D03A4FF1A73E}.Release|x86.ActiveCfg = Release|Any CPU
 		{105A86E7-1DF2-4A88-BD21-D03A4FF1A73E}.Release|x86.Build.0 = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|x64.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug|x86.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|Any CPU.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|Mixed Platforms.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|x64.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|x64.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|x86.ActiveCfg = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Debug-AnyCPU|x86.Build.0 = Debug|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|x64.ActiveCfg = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|x64.Build.0 = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|x86.ActiveCfg = Release|Any CPU
+		{69DE9507-0340-437C-8283-1A938DEB60B9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
