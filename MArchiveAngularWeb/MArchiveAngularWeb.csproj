@@ -60,10 +60,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\bootstrap-cyborg.css" />
     <Content Include="css\bootstrap-cyborg.min.css" />
+    <Content Include="css\loading-bar.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="js\angular.min.js" />
+    <Content Include="js\loading-bar.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
