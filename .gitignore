@@ -30,3 +30,4 @@ _ReSharper*/
 MArchive.Web/moviePictures/*
 MovieArchiveDB/MovieArchiveDB.dbmdl
 _log*.txt
+packages/
