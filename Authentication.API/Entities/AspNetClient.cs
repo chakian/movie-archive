@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Authentication.API.Entities
 {
-    public class Client
+    public class AspNetClient
     {
         [Key]
         public string Id { get; set; }

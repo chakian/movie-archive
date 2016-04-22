@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Authentication.API.Entities
 {
-    public class RefreshToken
+    public class AspNetRefreshToken
     {
         [Key]
         public string Id { get; set; }
