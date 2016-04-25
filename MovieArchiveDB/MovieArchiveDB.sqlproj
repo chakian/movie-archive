@@ -116,5 +116,13 @@
     <Build Include="dbo\Tables\USR_ListMovie.sql" />
     <Build Include="dbo\Tables\USR_List.sql" />
     <Build Include="dbo\Tables\USR_Archive.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetRefreshTokens.sql" />
+    <Build Include="dbo\Tables\AspNetClients.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
   </ItemGroup>
 </Project>
