@@ -72,6 +72,17 @@ namespace MArchiveLibrary.Helpers
             }
         }
 
+        public static string GetSHA256Hash(string input)
+        {
+            HashAlgorithm hashAlgorithm = new SHA256CryptoServiceProvider();
+
+            byte[] byteValue = Encoding.UTF8.GetBytes(input);
+
+            byte[] byteHash = hashAlgorithm.ComputeHash(byteValue);
+
+            return Convert.ToBase64String(byteHash);
+        }
+
         /// <summary>
 		/// Returns SHA1 hash value of the given input
 		/// </summary>
@@ -79,7 +90,7 @@ namespace MArchiveLibrary.Helpers
 		/// <returns></returns>
 		private static string ToSHA1(string data)
         {
-            //create new instance of md5
+            //create new instance of sha1
             SHA1 sha1 = SHA1.Create();
 
             //convert the input text to array of bytes

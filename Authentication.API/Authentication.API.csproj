@@ -145,6 +145,7 @@
     <Compile Include="AuthRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\RefreshTokensController.cs" />
     <Compile Include="Entities\AspNetClient.cs" />
     <Compile Include="Entities\AspNetRefreshToken.cs" />
     <Compile Include="Models\Enum.cs" />
@@ -165,6 +166,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MArchiveLibrary\MArchiveLibrary.csproj">
+      <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
+      <Name>MArchiveLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,5 @@
 ﻿using Authentication.API.Entities;
+using MArchiveLibrary.Helpers;
 using Microsoft.Owin.Security.Infrastructure;
 using System;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Authentication.API.Providers
 
                 var token = new AspNetRefreshToken()
                 {
-                    Id = Helper.GetHash(refreshTokenId),
+                    Id = EncryptionHelper.GetSHA256Hash(refreshTokenId),
                     ClientId = clientid,
                     Subject = context.Ticket.Identity.Name,
                     IssuedUtc = DateTime.UtcNow,
@@ -43,6 +44,27 @@ namespace Authentication.API.Providers
                     context.SetToken(refreshTokenId);
                 }
 
+            }
+        }
+
+        public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
+        {
+
+            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
+
+            string hashedTokenId = EncryptionHelper.GetSHA256Hash(context.Token);
+
+            using (AuthRepository _repo = new AuthRepository())
+            {
+                var refreshToken = await _repo.FindRefreshToken(hashedTokenId);
+
+                if (refreshToken != null)
+                {
+                    //Get protectedTicket from refreshToken class
+                    context.DeserializeTicket(refreshToken.ProtectedTicket);
+                    var result = await _repo.RemoveRefreshToken(hashedTokenId);
+                }
             }
         }
     }
