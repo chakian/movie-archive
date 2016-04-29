@@ -59,14 +59,8 @@
     <Folder Include="Comparison" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
-    <Folder Include="MOV\" />
-    <Folder Include="MOV\Tables\" />
-    <Folder Include="INF\" />
-    <Folder Include="INF\Tables\" />
     <Folder Include="Security\" />
     <Folder Include="dbo\Stored Procedures\" />
-    <Folder Include="ZZ\" />
-    <Folder Include="ZZ\Tables\" />
     <Folder Include="dbo\Views\" />
   </ItemGroup>
   <ItemGroup>
