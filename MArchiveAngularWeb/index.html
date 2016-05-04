@@ -15,15 +15,15 @@
                 <button class="btn btn-success navbar-toggle" ng-click="navbarExpanded = !navbarExpanded">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <a class="navbar-brand" href="#/">Home</a>
+                <a class="navbar-brand" href="#/" translate="yes">Home</a>
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="#/my-rated-movies">My Orders</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#" translate="yes">Welcome {{authentication.userName}}</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/my-rated-movies" translate="yes">My Orders</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()" translate="yes">Logout</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/login" translate="yes">Login</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup" translate="yes">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -31,9 +31,9 @@
     <div class="jumbotron">
         <div class="container">
             <div class="page-header text-center">
-                <h1>AngularJS Authentication</h1>
+                <h1 translate="yes">AngularJS Authentication</h1>
             </div>
-            <p>This single page application is built using AngularJS, it is using OAuth bearer token authentication, ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity to generate tokens and register users.</p>
+            <p translate="yes">This single page application is built using AngularJS, it is using OAuth bearer token authentication, ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity to generate tokens and register users.</p>
         </div>
     </div>
     <div class="container">
@@ -45,10 +45,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-muted">Created by Taiseer Joudeh. Twitter: <a target="_blank" href="http://twitter.com/tjoudeh">@tjoudeh</a></p>
+                    <p class="text-muted" translate="yes">Created by Taiseer Joudeh. Twitter: <a target="_blank" href="http://twitter.com/tjoudeh">@tjoudeh</a></p>
                 </div>
                 <div class="col-md-6">
-                    <p class="text-muted">Taiseer Joudeh Blog: <a target="_blank" href="http://bitoftech.net">bitoftech.net</a></p>
+                    <p class="text-muted" translate="yes">Taiseer Joudeh Blog: <a target="_blank" href="http://bitoftech.net">bitoftech.net</a></p>
                 </div>
             </div>
         </div>

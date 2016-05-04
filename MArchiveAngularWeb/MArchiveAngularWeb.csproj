@@ -72,6 +72,7 @@
     <Content Include="app\views\signup.html" />
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\controllers\signupController.js" />
+    <Content Include="bower_components\angular-gettext\dist\angular-gettext.min.js" />
     <Content Include="css\bootstrap-cyborg.min.css" />
     <Content Include="css\loading-bar.min.css" />
     <Content Include="css\site.css" />
