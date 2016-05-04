@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: index.html:34
+msgid "AngularJS Authentication"
+msgstr ""
+
+#: index.html:48
+msgid "Created by Taiseer Joudeh. Twitter: <a target=\"_blank\" href=\"http://twitter.com/tjoudeh\">@tjoudeh</a>"
+msgstr ""
+
+#: index.html:18
+msgid "Home"
+msgstr ""
+
+#: index.html:25
+msgid "Login"
+msgstr ""
+
+#: index.html:24
+msgid "Logout"
+msgstr ""
+
+#: index.html:23
+msgid "My Orders"
+msgstr ""
+
+#: index.html:26
+msgid "Sign Up"
+msgstr ""
+
+#: index.html:51
+msgid "Taiseer Joudeh Blog: <a target=\"_blank\" href=\"http://bitoftech.net\">bitoftech.net</a>"
+msgstr ""
+
+#: index.html:36
+msgid "This single page application is built using AngularJS, it is using OAuth bearer token authentication, ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity to generate tokens and register users."
+msgstr ""
+
+#: index.html:22
+msgid "Welcome {{authentication.userName}}"
+msgstr ""

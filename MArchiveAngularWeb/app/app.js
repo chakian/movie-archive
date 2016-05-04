@@ -1,4 +1,4 @@
-﻿var app = angular.module('MovieApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('MovieApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'gettext']);
 
 app.config(function ($routeProvider) {
 
