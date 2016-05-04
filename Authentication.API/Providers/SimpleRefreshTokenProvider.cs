@@ -67,5 +67,15 @@ namespace Authentication.API.Providers
                 }
             }
         }
+
+        public void Create(AuthenticationTokenCreateContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Receive(AuthenticationTokenReceiveContext context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
