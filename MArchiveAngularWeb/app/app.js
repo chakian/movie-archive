@@ -14,9 +14,9 @@ app.config(function ($routeProvider) {
             controller: "signupController",
             templateUrl: "/app/views/signup.html"
         })
-        .when("/my-rated-movies", {
-            controller: "myRatedMoviesController",
-            templateUrl: "/app/views/myRatedMovies.html"
+        .when("/my-lists", {
+            controller: "myListsController",
+            templateUrl: "/app/views/myLists.html"
         })
         .otherwise({ redirectTo: "/home" });
 });

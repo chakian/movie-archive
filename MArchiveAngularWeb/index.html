@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"><a href="#" translate="yes">Welcome {{authentication.userName}}</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="#/my-rated-movies" translate="yes">My Lists</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/my-lists" translate="yes">My Lists</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()" translate="yes">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login" translate="yes">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup" translate="yes">Sign Up</a></li>
@@ -79,6 +79,7 @@
     <script src="app/controllers/homeController.js"></script>
     <script src="app/controllers/loginController.js"></script>
     <script src="app/controllers/signupController.js"></script>
+    <script src="app/controllers/myListsController.js"></script>
     <!-- Load translations script -->
     <script src="app/translations.js"></script>
 </body>
