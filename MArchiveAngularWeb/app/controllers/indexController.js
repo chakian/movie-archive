@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('indexController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
+app.controller('indexController', ['$scope', '$location', 'authService', 'gettextCatalog', function ($scope, $location, authService, gettextCatalog) {
 
     $scope.logOut = function () {
         authService.logOut();

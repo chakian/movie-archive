@@ -1,60 +1,75 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"X-Generator: Poedit 1.8.7\n"
 "Last-Translator: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: \n"
 "Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: index.html:34
-msgid "AngularJS Authentication"
-msgstr ""
-
-#: index.html:48
+#: index.html:56
 msgid ""
-"Created by Taiseer Joudeh. Twitter: <a target=\"_blank\" href=\"http://"
-"twitter.com/tjoudeh\">@tjoudeh</a>"
-msgstr ""
-
-#: index.html:18
-msgid "Home"
-msgstr ""
-
-#: index.html:25
-msgid "Login"
-msgstr ""
-
-#: index.html:24
-msgid "Logout"
-msgstr ""
-
-#: index.html:23
-msgid "My Orders"
-msgstr ""
-
-#: index.html:26
-msgid "Sign Up"
-msgstr ""
-
-#: index.html:51
-msgid ""
-"Taiseer Joudeh Blog: <a target=\"_blank\" href=\"http://bitoftech.net"
+"Authentication API based on: <a target=\"_blank\" href=\"http://bitoftech.net"
 "\">bitoftech.net</a>"
 msgstr ""
 
+#: index.html:55
+msgid ""
+"Bootstrap template: <a target=\"_blank\" href=\"http://bootswatch.com/"
+"\">Bootswatch Cyborg</a>"
+msgstr ""
+
+#: index.html:47
+msgid ""
+"Created by <a href=\"http://chakian.com\" target=\"_blank\">Çağdaş Korkut</a>"
+msgstr ""
+"Yazan: <a href=\"http://chakian.com\" target=\"_blank\">Çağdaş Korkut</a>"
+
+#: index.html:25
+msgid "Login"
+msgstr "Giriş"
+
+#: index.html:24
+msgid "Logout"
+msgstr "Çıkış"
+
+#: index.html:18 index.html:34
+msgid "Movie Archive"
+msgstr "Movie Archive"
+
+#: index.html:57
+msgid ""
+"Multilanguage support based on <a target=\"_blank\" href=\"https://"
+"lostechies.com/gabrielschenker/2014/02/11/angularjspart-12-multi-language-"
+"support/\">this article</a>"
+msgstr ""
+
+#: index.html:23
+msgid "My Lists"
+msgstr "Listelerim"
+
+#: index.html:26
+msgid "Sign Up"
+msgstr "Yeni Kayıt"
+
 #: index.html:36
 msgid ""
-"This single page application is built using AngularJS, it is using OAuth "
-"bearer token authentication, ASP.NET Web API 2, OWIN middleware, and ASP.NET "
-"Identity to generate tokens and register users."
+"This application helps you organize your watch lists, easily find details of "
+"a movie or find a movie based on your criteria to watch. Enjoy!"
 msgstr ""
+"Bu uygulama ile izlenecek filmler listelerinizi düzenleyebilir, istediğiniz "
+"filmin detaylarına kolayca ulaşabilir veya aradığınız kriterlere uyan "
+"filmleri bulabilirsiniz. Keyfini çıkarın!"
+
+#: index.html:49
+msgid "Under development since 2006"
+msgstr "2006'dan beri yapım aşamasında"
 
 #: index.html:22
 msgid "Welcome {{authentication.userName}}"
-msgstr ""
+msgstr "Hoşgeldin {{authentication.userName}}"

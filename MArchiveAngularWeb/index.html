@@ -15,12 +15,12 @@
                 <button class="btn btn-success navbar-toggle" ng-click="navbarExpanded = !navbarExpanded">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <a class="navbar-brand" href="#/" translate="yes">Home</a>
+                <a class="navbar-brand" href="#/" translate="yes">Movie Archive</a>
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"><a href="#" translate="yes">Welcome {{authentication.userName}}</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="#/my-rated-movies" translate="yes">My Orders</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/my-rated-movies" translate="yes">My Lists</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()" translate="yes">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login" translate="yes">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup" translate="yes">Sign Up</a></li>
@@ -31,9 +31,9 @@
     <div class="jumbotron">
         <div class="container">
             <div class="page-header text-center">
-                <h1 translate="yes">AngularJS Authentication</h1>
+                <h1 translate="yes">Movie Archive</h1>
             </div>
-            <p translate="yes">This single page application is built using AngularJS, it is using OAuth bearer token authentication, ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity to generate tokens and register users.</p>
+            <p translate="yes">This application helps you organize your watch lists, easily find details of a movie or find a movie based on your criteria to watch. Enjoy!</p>
         </div>
     </div>
     <div class="container">
@@ -44,12 +44,19 @@
     <div id="footer">
         <div class="container">
             <div class="row">
+                <div class="col-md-6" translate="yes">Created by <a href="http://chakian.com" target="_blank">Çağdaş Korkut</a></div>
                 <div class="col-md-6">
-                    <p class="text-muted" translate="yes">Created by Taiseer Joudeh. Twitter: <a target="_blank" href="http://twitter.com/tjoudeh">@tjoudeh</a></p>
+                    <p class="text-muted" translate="yes">Under development since 2006</p>
                 </div>
+            </div>
+            <br />
+            <div class="row">
                 <div class="col-md-6">
-                    <p class="text-muted" translate="yes">Taiseer Joudeh Blog: <a target="_blank" href="http://bitoftech.net">bitoftech.net</a></p>
+                    <p class="text-muted" translate="yes">Bootstrap template: <a target="_blank" href="http://bootswatch.com/">Bootswatch Cyborg</a></p>
+                    <p class="text-muted" translate="yes">Authentication API based on: <a target="_blank" href="http://bitoftech.net">bitoftech.net</a></p>
+                    <p class="text-muted" translate="yes">Multilanguage support based on <a target="_blank" href="https://lostechies.com/gabrielschenker/2014/02/11/angularjspart-12-multi-language-support/">this article</a></p>
                 </div>
+                <div class="col-md-6">&nbsp;</div>
             </div>
         </div>
     </div>
@@ -61,17 +68,16 @@
     <script src="bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
     <!-- Load app main script -->
     <script src="app/app.js"></script>
-    <!-- Load translations script -->
-    <script src="app/translations.js"></script>
     <!-- Load services -->
     <script src="app/services/authInterceptorService.js"></script>
     <script src="app/services/authService.js"></script>
-    <script src="app/services/ordersService.js"></script>
+    <script src="app/services/myMovieListsService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js"></script>
     <script src="app/controllers/homeController.js"></script>
     <script src="app/controllers/loginController.js"></script>
     <script src="app/controllers/signupController.js"></script>
-    <script src="app/controllers/ordersController.js"></script>
+    <!-- Load translations script -->
+    <script src="app/translations.js"></script>
 </body>
 </html>

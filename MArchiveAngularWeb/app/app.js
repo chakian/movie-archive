@@ -25,14 +25,10 @@ app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
 
-
-
 app.run(['authService', function (authService) {
     authService.fillAuthData();
-}],
-[
-function (getTextCatalog) {
-    getTextCatalog.currentLanguage = 'tr';
-    getTextCatalog.debug = true;
-}]
-);
+}]);
+app.run(function (gettextCatalog) {
+    gettextCatalog.currentLanguage = 'tr';
+    gettextCatalog.debug = true;
+});
