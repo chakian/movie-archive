@@ -157,6 +157,15 @@
     <Compile Include="Controllers\RefreshTokensController.cs" />
     <Compile Include="Entities\AspNetClient.cs" />
     <Compile Include="Entities\AspNetRefreshToken.cs" />
+    <Compile Include="Migrations\201604201138520_InitialCreate.cs" />
+    <Compile Include="Migrations\201604201138520_InitialCreate.Designer.cs">
+      <DependentUpon>201604201138520_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605041028213_fb_g.cs" />
+    <Compile Include="Migrations\201605041028213_fb_g.Designer.cs">
+      <DependentUpon>201605041028213_fb_g.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enum.cs" />
     <Compile Include="Models\ExternalLoginModels.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -185,6 +194,14 @@
       <Project>{cbc09288-a06c-4a04-a81d-ed5044365773}</Project>
       <Name>MArchiveLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604201138520_InitialCreate.resx">
+      <DependentUpon>201604201138520_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605041028213_fb_g.resx">
+      <DependentUpon>201605041028213_fb_g.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
