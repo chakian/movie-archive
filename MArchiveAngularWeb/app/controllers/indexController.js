@@ -8,4 +8,19 @@ app.controller('indexController', ['$scope', '$location', 'authService', 'gettex
 
     $scope.authentication = authService.authentication;
 
+    // Language switcher
+    $scope.languages = {
+        current: gettextCatalog.currentLanguage,
+        available: {
+            'tr': 'Türkçe',
+            'en': 'English'
+        }
+    };
+    $scope.$watch('languages.current', function (lang) {
+        if (!lang) {
+            return;
+        }
+        gettextCatalog.setCurrentLanguage(lang);
+    });
+
 }]);

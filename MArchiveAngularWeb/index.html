@@ -26,6 +26,7 @@
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup" translate="yes">Sign Up</a></li>
                 </ul>
             </div>
+            <div class="pull-right"><select ng-model="languages.current" ng-options="key as value for (key, value) in languages.available"></select></div>
         </div>
     </div>
     <div class="jumbotron">
