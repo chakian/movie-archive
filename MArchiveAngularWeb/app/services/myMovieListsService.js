@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.factory('myMovieListsService', ['$http', function ($http) {
 
-    var serviceBase = 'http://localhost:65274/';
+    var serviceBase = apiUrl;
     var movielistsServiceFactory = {};
 
     var _getMyLists = function () {

@@ -32,3 +32,5 @@ app.run(function (gettextCatalog) {
     gettextCatalog.currentLanguage = 'tr';
     gettextCatalog.debug = true;
 });
+
+var apiUrl = 'https://localhost:40430/';
