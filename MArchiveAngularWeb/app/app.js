@@ -20,9 +20,14 @@ app.config(function ($routeProvider) {
         })
         .otherwise({ redirectTo: "/home" });
 });
-
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
+});
+
+var serviceBase = 'http://localhost:65132/';
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'ngAuthApp'
 });
 
 app.run(['authService', function (authService) {
@@ -33,4 +38,3 @@ app.run(function (gettextCatalog) {
     gettextCatalog.debug = true;
 });
 
-var apiUrl = 'https://localhost:40430/';
