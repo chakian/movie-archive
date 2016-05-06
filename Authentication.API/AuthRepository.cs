@@ -40,13 +40,6 @@ namespace Authentication.API
             return user;
         }
 
-        public void Dispose()
-        {
-            _ctx.Dispose();
-            _userManager.Dispose();
-
-        }
-
         public AspNetClient FindClient(string clientId)
         {
             var client = _ctx.Clients.Find(clientId);
@@ -119,6 +112,13 @@ namespace Authentication.API
             var result = await _userManager.AddLoginAsync(userId, login);
 
             return result;
+        }
+
+		public void Dispose()
+        {
+            _ctx.Dispose();
+            _userManager.Dispose();
+
         }
     }
 }

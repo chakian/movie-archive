@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
 using System.Configuration;
+using System.Data.Entity;
 using System.Web.Http;
 
 [assembly: OwinStartup(typeof(Authentication.API.Startup))]
@@ -19,12 +20,15 @@ namespace Authentication.API
 
         public void Configuration(IAppBuilder app)
         {
+			HttpConfiguration config = new HttpConfiguration();
+
             ConfigureOAuth(app);
 
-            HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Migrations.Configuration>());
+
         }
 
         public void ConfigureOAuth(IAppBuilder app)
@@ -44,7 +48,7 @@ namespace Authentication.API
 
             // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
             //Configure Google External Login
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions()

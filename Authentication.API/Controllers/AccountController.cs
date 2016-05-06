@@ -21,6 +21,11 @@ namespace Authentication.API.Controllers
     {
         private AuthRepository _repo = null;
 
+        private IAuthenticationManager Authentication
+        {
+            get { return Request.GetOwinContext().Authentication; }
+        }
+
         public AccountController()
         {
             _repo = new AuthRepository();
@@ -46,50 +51,6 @@ namespace Authentication.API.Controllers
             }
 
             return Ok();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _repo.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
-
-        private IHttpActionResult GetErrorResult(IdentityResult result)
-        {
-            if (result == null)
-            {
-                return InternalServerError();
-            }
-
-            if (!result.Succeeded)
-            {
-                if (result.Errors != null)
-                {
-                    foreach (string error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error);
-                    }
-                }
-
-                if (ModelState.IsValid)
-                {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            return null;
-        }
-
-        private IAuthenticationManager Authentication
-        {
-            get { return Request.GetOwinContext().Authentication; }
         }
 
         // GET api/Account/ExternalLogin
@@ -144,6 +105,132 @@ namespace Authentication.API.Controllers
 
             return Redirect(redirectUri);
 
+        }
+
+        // POST api/Account/RegisterExternal
+        [AllowAnonymous]
+        [Route("RegisterExternal")]
+        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var verifiedAccessToken = await VerifyExternalAccessToken(model.Provider, model.ExternalAccessToken);
+            if (verifiedAccessToken == null)
+            {
+                return BadRequest("Invalid Provider or External Access Token");
+            }
+
+            IdentityUser user = await _repo.FindAsync(new UserLoginInfo(model.Provider, verifiedAccessToken.user_id));
+
+            bool hasRegistered = user != null;
+
+            if (hasRegistered)
+            {
+                return BadRequest("External user is already registered");
+            }
+
+            user = new IdentityUser() { UserName = model.UserName };
+
+            IdentityResult result = await _repo.CreateAsync(user);
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            var info = new ExternalLoginInfo()
+            {
+                DefaultUserName = model.UserName,
+                Login = new UserLoginInfo(model.Provider, verifiedAccessToken.user_id)
+            };
+
+            result = await _repo.AddLoginAsync(user.Id, info.Login);
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            //generate access token response
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(model.UserName);
+
+            return Ok(accessTokenResponse);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ObtainLocalAccessToken")]
+        public async Task<IHttpActionResult> ObtainLocalAccessToken(string provider, string externalAccessToken)
+        {
+
+            if (string.IsNullOrWhiteSpace(provider) || string.IsNullOrWhiteSpace(externalAccessToken))
+            {
+                return BadRequest("Provider or external access token is not sent");
+            }
+
+            var verifiedAccessToken = await VerifyExternalAccessToken(provider, externalAccessToken);
+            if (verifiedAccessToken == null)
+            {
+                return BadRequest("Invalid Provider or External Access Token");
+            }
+
+            IdentityUser user = await _repo.FindAsync(new UserLoginInfo(provider, verifiedAccessToken.user_id));
+
+            bool hasRegistered = user != null;
+
+            if (!hasRegistered)
+            {
+                return BadRequest("External user is not registered");
+            }
+
+            //generate access token response
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(user.UserName);
+
+            return Ok(accessTokenResponse);
+
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _repo.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        #region Helpers
+
+        private IHttpActionResult GetErrorResult(IdentityResult result)
+        {
+            if (result == null)
+            {
+                return InternalServerError();
+            }
+
+            if (!result.Succeeded)
+            {
+                if (result.Errors != null)
+                {
+                    foreach (string error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // No ModelState errors are available to send, so just return an empty BadRequest.
+                    return BadRequest();
+                }
+
+                return BadRequest(ModelState);
+            }
+
+            return null;
         }
 
         private string ValidateClientAndRedirectUri(HttpRequestMessage request, ref string redirectUriOutput)
@@ -297,91 +384,6 @@ namespace Authentication.API.Controllers
             return tokenResponse;
         }
 
-        // POST api/Account/RegisterExternal
-        [AllowAnonymous]
-        [Route("RegisterExternal")]
-        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var verifiedAccessToken = await VerifyExternalAccessToken(model.Provider, model.ExternalAccessToken);
-            if (verifiedAccessToken == null)
-            {
-                return BadRequest("Invalid Provider or External Access Token");
-            }
-
-            IdentityUser user = await _repo.FindAsync(new UserLoginInfo(model.Provider, verifiedAccessToken.user_id));
-
-            bool hasRegistered = user != null;
-
-            if (hasRegistered)
-            {
-                return BadRequest("External user is already registered");
-            }
-
-            user = new IdentityUser() { UserName = model.UserName };
-
-            IdentityResult result = await _repo.CreateAsync(user);
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            var info = new ExternalLoginInfo()
-            {
-                DefaultUserName = model.UserName,
-                Login = new UserLoginInfo(model.Provider, verifiedAccessToken.user_id)
-            };
-
-            result = await _repo.AddLoginAsync(user.Id, info.Login);
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            //generate access token response
-            var accessTokenResponse = GenerateLocalAccessTokenResponse(model.UserName);
-
-            return Ok(accessTokenResponse);
-        }
-
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("ObtainLocalAccessToken")]
-        public async Task<IHttpActionResult> ObtainLocalAccessToken(string provider, string externalAccessToken)
-        {
-
-            if (string.IsNullOrWhiteSpace(provider) || string.IsNullOrWhiteSpace(externalAccessToken))
-            {
-                return BadRequest("Provider or external access token is not sent");
-            }
-
-            var verifiedAccessToken = await VerifyExternalAccessToken(provider, externalAccessToken);
-            if (verifiedAccessToken == null)
-            {
-                return BadRequest("Invalid Provider or External Access Token");
-            }
-
-            IdentityUser user = await _repo.FindAsync(new UserLoginInfo(provider, verifiedAccessToken.user_id));
-
-            bool hasRegistered = user != null;
-
-            if (!hasRegistered)
-            {
-                return BadRequest("External user is not registered");
-            }
-
-            //generate access token response
-            var accessTokenResponse = GenerateLocalAccessTokenResponse(user.UserName);
-
-            return Ok(accessTokenResponse);
-
-        }
-
         private class ExternalLoginData
         {
             public string LoginProvider { get; set; }
@@ -417,5 +419,7 @@ namespace Authentication.API.Controllers
                 };
             }
         }
+
+        #endregion
     }
 }
